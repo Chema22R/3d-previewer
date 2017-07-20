@@ -1,9 +1,5 @@
 
 $(function() {
-	var address = "localhost";
-	var port = 8080;
-
-
 	$(".navbar.top input[type='file'].fileUpload").change(function(e) {
 		e.preventDefault();
 
@@ -16,7 +12,7 @@ $(function() {
 			$(".loadingBar.wrapper").fadeIn("slow");
 
 			$.ajax({
-				url: "http://"+address+":"+port+"/api/file",
+				url: "http://"+serverAddress+":"+serverPort+"/api/file",
 				method: "POST",
 				data: formData,
 				processData: false,

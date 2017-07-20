@@ -1,9 +1,5 @@
 
 $(function() {
-    var address = "localhost";
-    var port = 8080;
-
-
     /* File List Menu
     ========================================================================== */
 
@@ -11,7 +7,7 @@ $(function() {
         e.preventDefault();
         
         $.ajax({
-            url: "http://"+address+":"+port+"/api/file",
+            url: "http://"+serverAddress+":"+serverPort+"/api/file",
             method: "GET",
             success: function(res, status) {
                 entriesGenerator(res);
@@ -102,7 +98,7 @@ $(function() {
 			$(".loadingBar.wrapper").fadeIn("slow");
             
             $.ajax({
-                url: "http://"+address+":"+port+"/api/file/" + id,
+                url: "http://"+serverAddress+":"+serverPort+"/api/file/" + id,
                 method: "GET",
                 success: function(res, status) {
 					$(".loadingBar.wrapper").fadeOut("slow");
@@ -138,7 +134,7 @@ $(function() {
             var entry = this.parentNode;
             
             $.ajax({
-                url: "http://"+address+":"+port+"/api/file/" + id,
+                url: "http://"+serverAddress+":"+serverPort+"/api/file/" + id,
                 method: "DELETE",
                 success: function(res, status) {
                     $(entry).hide(400, "linear", function() {
