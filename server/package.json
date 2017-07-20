@@ -1,0 +1,23 @@
+{
+  "name": "3d_preview_control",
+  "version": "1.0.0",
+  "description": "HTML5 3D Printing Preview Control",
+  "main": "server.js",
+  "dependencies": {
+  	"express": "4.14.x",
+  	"mongoose": "4.8.x",
+    "busboy": "0.2.x",
+    "cors": "2.8.x"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gmenguez.visualstudio.com/HTML5%203D%20Printing%20Preview%20Control"
+  },
+  "author": "Jose Maria Rivera Alonso",
+  "license": "ISC"
+}

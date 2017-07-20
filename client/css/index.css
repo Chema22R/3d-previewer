@@ -1,0 +1,338 @@
+
+html, body {
+	height: 100%;
+	background-color: #202020;
+}
+
+.icon {
+	font-size: 40px;
+	color: white;
+}
+
+.icon:hover {
+	color: grey;
+}
+
+button {
+	border: none;
+	background: none;
+	outline: 0px;
+}
+
+
+/* Preview Control
+   ========================================================================== */
+
+.previewControl.wrapper {
+	height: 100%;
+	width: 100%;
+
+	overflow: hidden;
+}
+
+
+/* State Message
+   ========================================================================== */
+
+.stateMessage {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+
+	height: 30px;
+	padding: 15px 20%;
+
+	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
+	line-height: 1.5;
+
+	overflow: hidden;
+}
+
+
+/* Navbar (top)
+   ========================================================================== */
+
+.navbar.top {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	right: 15px;
+	
+	height: 40px;
+}
+
+.navbar.top .left {
+	float: left;
+	margin: 0 10px;
+
+	overflow: hidden;
+}
+
+.navbar.top .right {
+	float: right;
+	margin: 0 10px;
+
+	overflow: hidden;
+}
+
+.navbar.top input[type="file"].fileUpload {
+	position: fixed;
+	top: 10px;
+	right: 25px;
+
+	height: 40px;
+	width: 40px;
+
+	overflow: hidden;
+
+	opacity: 0;
+}
+
+
+/* Navbar (right)
+   ========================================================================== */
+
+.navbar.right {
+	display: none;
+
+	position: fixed;
+	top: 70px;
+	bottom: 10px;
+	right: 15px;
+
+	width: 60px;
+}
+
+.navbar.right .icon, .rotatorArrows {
+	margin: 5px 10px;
+
+	overflow: hidden;
+}
+
+.rotatorArrows {
+	height: 40px;
+	width: 40px;
+}
+
+.rotatorArrows * {
+	position: relative;
+	font-size: 14px;
+}
+
+.rotatorArrows .icon-arrow-up {
+	left: 3px;
+	bottom: 5px;
+}
+
+.rotatorArrows .icon-arrow-down {
+	left: 3px;
+	bottom: 27px;
+}
+
+.rotatorArrows .icon-arrow-right {
+	left: 16px;
+	bottom: 16px;
+}
+
+.rotatorArrows .icon-arrow-left {
+	right: 10px;
+	bottom: 64px;
+}
+
+
+/* File List
+   ========================================================================== */
+
+.fileList.menu {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	
+	max-width: 30%;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	background: #EEE;
+}
+
+.fileList.menu .fileList.search {
+	width: 100%;
+	
+	border: none;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+
+	text-align: center;
+	line-height: 2.8;
+
+	background: #EEE;
+}
+
+.fileList.menu .fileList.entry {
+	margin-left: 3px;
+
+	font-family: Helvetica, Arial, sans-serif;
+	line-height: 1.2;
+
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+
+.fileList.menu .fileList.entry:hover {
+	margin-left: 0;
+	
+	border-left-width: 3px;
+	border-left-style: solid;
+	border-left-color: limegreen;
+
+	background: #FAFAFA;
+}
+
+
+.fileList.menu .fileList.info {
+	display: inline-block;
+	width: 100%;
+}
+
+.fileList.menu .fileList.name, .fileList.menu .fileList.date {
+	margin: 5px 5%;
+	margin-right: 60px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.fileList.menu .fileList.name {
+	font-weight: 700;
+}
+
+.fileList.menu .fileList.date {
+	font-size: 0.8em;
+}
+
+
+.fileList.menu .fileList.icon-delete {
+	position: absolute;
+	right: 15px;
+
+	margin-top: 10px;
+	padding: 2px;
+	width: 24px;
+
+	font-size: 25px;
+	text-align: center;
+	color: grey;
+}
+
+.fileList.menu .fileList.icon-delete:hover {
+	color: red;
+	cursor: pointer;
+}
+
+
+/* Loading Bar
+   ========================================================================== */
+
+.loadingBar.wrapper {
+	display: none;
+}
+
+.loadingBar.wrapper .loadingBar.leftover {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+}
+
+.loadingBar.wrapper .loadingBar.loader {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+
+    width: 120px;
+    height: 120px;
+	margin: -60px 0 0 -60px;
+
+    border-radius: 50%;
+	border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+	
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+
+/* Help Menu
+   ========================================================================== */
+
+.help.wrapper {
+	display: none;
+}
+
+.help.wrapper .help.leftover {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+
+	background: #000;
+	opacity: 0.8;
+}
+
+.help.wrapper .help.menu {
+	display: flex;
+	align-content: center;
+
+	position: fixed;
+	top: 20%;
+
+	padding: 20px 10px;
+	max-width: 700px;
+	width: 60%;
+	max-height: 60%;
+
+	border-radius: 20px;
+
+	background: #FFF;
+	opacity: 0.8;
+
+	overflow: auto;
+}
+
+.help.wrapper .help.menu .help.content {
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+.help.wrapper .help.menu .help.content.separator {
+	border-right-style: solid;
+	border-right-color: #808080;
+	border-right-width: 1px;
+}
+
+.help.wrapper .help.menu .help.content h4 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.help.wrapper .help.menu .help.content p {
+	margin: 5px 10px;
+	font-size: 0.9em;
+}
+
+.help.wrapper .help.menu .help.content p.smallFont {
+	font-size: 0.8em;
+}
