@@ -4,10 +4,10 @@
   "description": "HTML5 3D Printing Preview Control",
   "main": "server.js",
   "dependencies": {
-  	"express": "4.x",
-  	"mongoose": "4.x",
+  	"express": "4.14.x",
+  	"mongoose": "4.8.x",
     "busboy": "0.2.x",
-    "cors": "2.x"
+    "cors": "2.8.x"
   },
   "devDependencies": {
   },
