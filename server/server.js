@@ -26,11 +26,14 @@ app.use("/api", router);
 /* connections
 ========================================================================== */
 
-app.listen(8080, function () {
-	console.log("> Node server running on http://localhost:8080");
+var serverPort = 8080;
+var preview = "mongodb://localhost/3dpreview";
+
+app.listen(serverPort, function () {
+	console.log("> 3D Preview server running on http://localhost:8080" + serverPort);
 });
 
-mongoose.connect("mongodb://localhost/3dpreview", function(err, res) {
+mongoose.createConnection(preview, function(err, res) {
 	if (err) {
 		console.error("- ERROR connecting to database\n     " + err.message);
 	} else {
