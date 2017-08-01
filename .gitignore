@@ -1,4 +1,5 @@
-files/
-log/
-
 .DS_Store
+
+server/files
+server/log
+server/node_modules
