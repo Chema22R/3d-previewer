@@ -26,7 +26,7 @@ app.use("/api", router);
 /* connections
 ========================================================================== */
 
-var serverPort = 8080;
+var serverPort = 8081;
 
 app.listen(serverPort, function () {
 	console.log("> 3D Preview server running on http://localhost:" + serverPort);
