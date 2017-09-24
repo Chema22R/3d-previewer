@@ -1,4 +1,4 @@
-/*!
+/*
  * ==========================================================
  *  COLOR PICKER PLUGIN 1.3.3
  * ==========================================================
@@ -613,7 +613,9 @@
         };
 
         function fitDelayed() {  // special variant of fit function that waits 0.5s (is necessary to the orientationchange event)
-            new Promise((resolve) => setTimeout(resolve, 500)).then(() => {
+            new Promise(function(resolve) {
+                setTimeout(resolve, 500)
+            }).then(function() {
                 return $.fit();
             });
         };

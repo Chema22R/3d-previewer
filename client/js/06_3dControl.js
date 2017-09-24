@@ -1,4 +1,3 @@
-
 var controller3D;
 
 $(function() {
