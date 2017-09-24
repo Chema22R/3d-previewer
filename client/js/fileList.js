@@ -43,6 +43,7 @@ $(function() {
         delayedLoad();
 
         $(".fileList.menu").fadeIn("slow");
+        $(".scroll").perfectScrollbar("update");
     }
 
 

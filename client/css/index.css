@@ -304,17 +304,22 @@ button {
 	width: 60%;
 	max-height: 60%;
 
-	border-radius: 20px;
+	border-radius: 10px;
 
 	background: #FFF;
 	opacity: 0.8;
-
-	overflow: auto;
 }
 
 .help.wrapper .help.menu .help.content {
+	position: relative;
+
+	width: 50%;
+	max-height: 60%;
+	
 	padding: 0 10px;
 	margin: 0 auto;
+
+	overflow: auto;
 }
 
 .help.wrapper .help.menu .help.content.separator {

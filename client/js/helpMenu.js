@@ -2,6 +2,7 @@
 $(function() {
     $(window).resize(function() {   // centers the help menu to the window size (on window resize)
 		$(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
+        $(".scroll").perfectScrollbar("update");
 	});
 
     $(window).on("orientationchange", function() {   // centers the help menu to the window size (on orientation change)
@@ -14,6 +15,7 @@ $(function() {
         e.preventDefault();
         $(".help.wrapper").fadeIn("slow");
         $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
+        $(".scroll").perfectScrollbar("update");
     });
 
     $(".help.wrapper .help.leftover").on("mousedown touchstart", function(e) {   // closes the help menu
