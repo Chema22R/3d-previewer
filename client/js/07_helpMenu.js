@@ -14,7 +14,12 @@ $(function() {
         e.preventDefault();
         $(".help.wrapper").fadeIn("slow");
         $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
-        $(".scroll").perfectScrollbar("update");
+
+        setTimeout(function() {
+            $(".help.content").scrollTop(0);
+            $(".help.content").scrollLeft(0);
+            $(".scroll").perfectScrollbar("update");
+        }, 10);
     });
 
     $(".help.wrapper .help.leftover").on("mousedown touchstart", function(e) {   // closes the help menu

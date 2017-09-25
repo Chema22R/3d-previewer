@@ -39,10 +39,13 @@ $(function() {
             }
         }
 
-        delayedLoad();
-
         $(".fileList.menu").fadeIn("slow");
-        $(".scroll").perfectScrollbar("update");
+
+        setTimeout(function() {
+            $(".fileList.menu").scrollTop(0);
+            $(".scroll").perfectScrollbar("update");
+            delayedLoad();
+        }, 10);
     }
 
 
