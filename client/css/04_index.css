@@ -143,6 +143,18 @@ button {
 	bottom: 64px;
 }
 
+@media screen and (max-height: 320px) {
+	.navbar.right {
+		top: 60px;
+		right: 20px;
+		width: 50px;
+	}
+
+	.navbar.right .icon {font-size: 30px;}
+	.navbar.right .rotatorArrows {margin: 5px;}
+	.navbar.right .rotatorArrows * {font-size: 14px;}
+}
+
 
 /* File List
    ========================================================================== */
@@ -237,6 +249,20 @@ button {
 .fileList.menu .fileList.icon-delete:hover {
 	color: red;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 370px) {
+	.fileList.menu .fileList.name,
+	.fileList.menu .fileList.date {margin-right: 40px;}
+
+	.fileList.menu .fileList.icon-delete {right: 5px;}
+}
+
+@media screen and (max-width: 200px) {
+	.fileList.menu .fileList.name,
+	.fileList.menu .fileList.date {margin-right: 30px;}
+
+	.fileList.menu .fileList.icon-delete {right: 0;}
 }
 
 
