@@ -143,18 +143,6 @@ button {
 	bottom: 64px;
 }
 
-@media screen and (max-height: 320px) {
-	.navbar.right {
-		top: 60px;
-		right: 20px;
-		width: 50px;
-	}
-
-	.navbar.right .icon {font-size: 30px;}
-	.navbar.right .rotatorArrows {margin: 5px;}
-	.navbar.right .rotatorArrows * {font-size: 14px;}
-}
-
 
 /* File List
    ========================================================================== */
@@ -335,6 +323,22 @@ button {
 	background: #FFF;
 	opacity: 0.8;
 }
+
+.help.wrapper .help.menu .exitButton {
+	position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px;
+	margin: 10px 15px;
+
+	font-size: 16px;
+	color: #888;
+
+	cursor: pointer;
+	z-index: 1;
+}
+
+.help.wrapper .help.menu .exitButton:hover {color: #e00;}
 
 .help.wrapper .help.menu .help.content {
 	position: relative;

@@ -22,7 +22,7 @@ $(function() {
         }, 10);
     });
 
-    $(".help.wrapper .help.leftover").on("mousedown touchstart", function(e) {   // closes the help menu
+    $(".help.wrapper .help.leftover, .help.wrapper .help.menu .exitButton").on("mousedown touchstart", function(e) {   // closes the help menu
         e.preventDefault();
         $(".help.wrapper").fadeOut("slow");
     });
