@@ -1,0 +1,29 @@
+UPLOAD
+    10  Error at file reading (specified file name, error message)
+    11  Error at file procesing (specified file name, error message)
+    12  Database disconnected
+    13  Error at geometry storage (specified file name, error message)
+
+    30  Geometry stored (specified file name, path)
+
+GETALL
+    10  Database disconnected
+    11  Error at getting file list (error message)
+
+    30  File list obtained (file list length)
+
+GETBYID
+    10  Database disconnected
+    11  Error at getting geometry (specified file id, error message)
+
+    20  File not found (specified file id)
+
+    30  Geometry obtained (specified file id)
+
+DELETEBYID
+    10  Database disconnected
+    11  Error at removing geometry (specified file id, error message)
+
+    20  File not found (specified file id)
+
+    30  Geometry removed (specified file id)

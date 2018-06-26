@@ -11,7 +11,7 @@ $(function() {
 			$(".loadingBar.wrapper").fadeIn("slow");
 
 			$.ajax({
-				url: "http://"+serverAddress+":"+serverPort+"/api/file",
+				url: "http://"+serverAddress+":"+serverPort+"/file",
 				method: "POST",
 				data: formData,
 				processData: false,
