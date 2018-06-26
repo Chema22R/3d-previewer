@@ -1,3 +1,4 @@
+"use strict";
 
 exports.parse = function(fileName, data) {
 	var parser;
