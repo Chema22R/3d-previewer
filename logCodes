@@ -6,6 +6,10 @@ UPLOAD
 
     30  Geometry stored (specified file name, path)
 
+    40  All chunks of the file captured (specified file name, number of chunks)
+    41  File assembled (specified file name)
+    42  File parsed (specified file name)
+
 GETALL
     10  Database disconnected
     11  Error at getting file list (error message)

@@ -38,6 +38,8 @@ exports.upload = function(req, res) {
 			dataChunks.push(chunk);
 			dataLength += chunk.length;
 		}).on("end", function() {
+			writeLog(40, [filename, dataChunks.length]);
+
 			/* File assembly */
 			var data = new Buffer(dataLength);
 
@@ -45,6 +47,8 @@ exports.upload = function(req, res) {
 				dataChunks[i].copy(data, pos);
 				pos += dataChunks[i].length;
 			}
+
+			writeLog(41, filename);
 
 			/* File processing */
 			fileProcessing(filename, data);
@@ -59,6 +63,7 @@ exports.upload = function(req, res) {
 		try {
 			/* File parse */
 			var plotData = Parser.parse(fileName, data);
+			writeLog(42, fileName);
 
 			/* Response to client */
 			res.status(201).send(plotData);
