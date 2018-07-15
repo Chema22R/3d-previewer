@@ -1,5 +1,5 @@
 {
-  "name": "3d_preview_control",
+  "name": "3dpreview",
   "version": "1.0.0",
   "description": "HTML5 3D Printing Preview Control",
   "main": "server.js",
