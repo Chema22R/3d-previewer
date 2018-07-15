@@ -59,7 +59,9 @@ app.listen(serverPort, function () {
 	console.log("> 3D Preview server running on http://localhost:" + serverPort);
 });
 
-mongoose.connect(uri, function(err) {
+mongoose.connect(uri, {
+	useMongoClient: true
+}, function(err) {
 	if (err) {
 		console.error("- ERROR connecting to database '3dpreview'\n     " + err.message);
 	} else {
