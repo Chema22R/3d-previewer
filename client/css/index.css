@@ -106,7 +106,7 @@ button {
 	width: 60px;
 }
 
-.navbar.right .icon, .rotatorArrows {
+.navbar.right > * {
 	margin: 10px;
 	overflow: hidden;
 }
@@ -116,7 +116,7 @@ button {
 	width: 40px;
 }
 
-.rotatorArrows * {
+.rotatorArrows > * {
 	position: relative;
 	margin: 5px 10px;
 	font-size: 14px;
