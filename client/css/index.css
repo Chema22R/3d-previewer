@@ -58,23 +58,23 @@ button {
 
 .navbar.top {
 	position: fixed;
-	top: 10px;
-	left: 10px;
-	right: 15px;
+	top: 0;
+	left: 0;
+	right: 0;
 	
 	height: 40px;
 }
 
 .navbar.top .left {
 	float: left;
-	margin: 0 10px;
+	margin: 15px 0 0 20px;
 
 	overflow: hidden;
 }
 
 .navbar.top .right {
 	float: right;
-	margin: 0 10px;
+	margin: 15px 20px 0 0;
 
 	overflow: hidden;
 }
@@ -100,16 +100,14 @@ button {
 	display: none;
 
 	position: fixed;
-	top: 70px;
-	bottom: 10px;
-	right: 15px;
+	top: 100px;
+	right: 10px;
 
 	width: 60px;
 }
 
 .navbar.right .icon, .rotatorArrows {
-	margin: 5px 10px;
-
+	margin: 10px;
 	overflow: hidden;
 }
 
@@ -120,6 +118,7 @@ button {
 
 .rotatorArrows * {
 	position: relative;
+	margin: 5px 10px;
 	font-size: 14px;
 }
 
@@ -239,6 +238,10 @@ button {
 	cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+	.fileList.menu {max-width: 70%;}
+}
+
 @media screen and (max-width: 370px) {
 	.fileList.menu .fileList.name,
 	.fileList.menu .fileList.date {margin-right: 40px;}
@@ -328,8 +331,7 @@ button {
 	position: absolute;
     top: 0;
     right: 0;
-    padding: 3px;
-	margin: 10px 15px;
+    padding: 18px 20px 5px 5px;
 
 	font-size: 16px;
 	color: #888;
