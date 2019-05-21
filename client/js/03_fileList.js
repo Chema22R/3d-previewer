@@ -43,7 +43,6 @@ $(function() {
 
         setTimeout(function() {
             $(".fileList.menu").scrollTop(0);
-            $(".scroll").perfectScrollbar("update");
             delayedLoad();
         }, 10);
     }

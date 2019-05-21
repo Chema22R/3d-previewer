@@ -1,7 +1,6 @@
 $(function() {
     $(window).resize(function() {   // centers the help menu to the window size (on window resize)
 		$(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
-        $(".scroll").perfectScrollbar("update");
 	});
 
     $(window).on("orientationchange", function() {   // centers the help menu to the window size (on orientation change)
@@ -18,7 +17,6 @@ $(function() {
         setTimeout(function() {
             $(".help.content").scrollTop(0);
             $(".help.content").scrollLeft(0);
-            $(".scroll").perfectScrollbar("update");
         }, 10);
     });
 
