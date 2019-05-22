@@ -403,7 +403,7 @@ button {
     .help.wrapper .help.menu {top: 10%;}
 }
 
-@media screen and (max-width: 630px) and (max-height: 390px) {
+@media screen and (max-width: 680px), screen and (max-height: 390px) {
     .help.wrapper .help.menu {
         top: 0;
         right: 0;
