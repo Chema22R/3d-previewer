@@ -1,4 +1,3 @@
-
 html, body {
 	height: 100%;
 	background-color: #202020;
@@ -106,7 +105,8 @@ button {
 	width: 60px;
 }
 
-.navbar.right > * {
+.navbar.right > button,
+.navbar.right > div {
 	margin: 10px;
 	overflow: hidden;
 }
@@ -116,7 +116,7 @@ button {
 	width: 40px;
 }
 
-.rotatorArrows > * {
+.rotatorArrows > button {
 	position: relative;
 	margin: 5px 10px;
 	font-size: 14px;
@@ -140,6 +140,28 @@ button {
 .rotatorArrows .icon-arrow-left {
 	right: 10px;
 	bottom: 64px;
+}
+
+@media screen and (max-height: 420px) {
+    .navbar.right {top: 80px;}
+}
+
+@media screen and (max-height: 390px) {
+    .navbar.right {top: 70px;}
+}
+
+@media screen and (max-height: 380px) {
+    .navbar.right > button,
+    .navbar.right > div {margin: 8px 10px;}
+}
+
+@media screen and (max-height: 360px) {
+    .navbar.right > button,
+    .navbar.right > div {margin: 5px 10px;}
+}
+
+@media screen and (max-height: 325px) {
+    .navbar.right > button.help {display: none;}
 }
 
 
