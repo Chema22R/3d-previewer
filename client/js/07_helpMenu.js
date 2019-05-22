@@ -5,14 +5,14 @@ $(function() {
 
     $(window).on("orientationchange", function() {   // centers the help menu to the window size (on orientation change)
         setTimeout(function() {
-		    $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
+		    $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
         }, 500);
 	});
 
     $(".navbar.right .help.icon").click(function(e) {   // triggers the help menu
         e.preventDefault();
         $(".help.wrapper").fadeIn("slow");
-        $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").width()) / 2);
+        $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
 
         setTimeout(function() {
             $(".help.content").scrollTop(0);
