@@ -409,6 +409,8 @@ button {
         right: 0;
         bottom: 0;
         left: 0 !important;
+        max-width: unset;
+	    width: unset;
         border-radius: 0;
     }
     
