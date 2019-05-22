@@ -341,7 +341,6 @@ button {
 	padding: 15px 10px;
 	max-width: 700px;
 	width: 60%;
-	max-height: 60%;
 
 	border-radius: 10px;
 
@@ -394,4 +393,24 @@ button {
 
 .help.wrapper .help.menu .help.content p.smallFont {
 	font-size: 0.8em;
+}
+
+@media screen and (max-width: 900px) {
+    .help.wrapper .help.menu {width: unset;}
+}
+
+@media screen and (max-height: 450px) {
+    .help.wrapper .help.menu {top: 10%;}
+}
+
+@media screen and (max-width: 630px) and (max-height: 390px) {
+    .help.wrapper .help.menu {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0 !important;
+        border-radius: 0;
+    }
+    
+    .help.wrapper .help.menu .help.content {max-height: unset;}
 }
