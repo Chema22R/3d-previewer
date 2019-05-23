@@ -244,7 +244,7 @@
             on_move_mobile = "touchmove",
             on_up = "mouseup",
             on_up_mobile = "touchend",
-            on_resize = "resize";
+            on_resize = "resize",
             on_orientationchange = "orientationchange";
 
         // return a new instance if `CP` was called without the `new` operator

@@ -13,7 +13,7 @@ $(function() {
     $("<p>" + projectIntroText + "</p>").appendTo("#projectIntroText");
 
     $(window).on("click touchstart", function(e) {
-        if ($("#projectIntroContainer").is(":visible") && ($(e.target).is("#projectIntroContainer") || $(e.target).is("#projectIntroExit"))) {
+        if ($("#projectIntroContainer").is(":visible") && ($(e.target).is("#projectIntroContainer, #projectIntroBack, #projectIntroExit"))) {
             $("#projectIntroContainer").fadeOut("slow");
         }
     });
