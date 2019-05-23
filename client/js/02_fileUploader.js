@@ -42,7 +42,7 @@ $(function() {
 	function validateExt(fileExt) {
 		var validExt = ["stl", "ply", "obj"];
 
-		for (i=0; i<validExt.length; i++) {
+		for (let i=0; i<validExt.length; i++) {
 			if (validExt[i] == fileExt.toLowerCase()) {
 				return true;
 			}
