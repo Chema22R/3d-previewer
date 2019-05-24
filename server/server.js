@@ -53,7 +53,7 @@ if (fs.existsSync(app.locals.logPath)) {
 ========================================================================== */
 
 var serverPort = 8081;
-var uri = "mongodb://localhost/3dpreview";
+var uri = "mongodb://localhost/3dpreviewer";
 
 app.listen(serverPort, function () {
 	console.log("> 3D Preview server running on http://localhost:" + serverPort);
@@ -63,9 +63,9 @@ mongoose.connect(uri, {
 	useMongoClient: true
 }, function(err) {
 	if (err) {
-		console.error("- ERROR connecting to database '3dpreview'\n     " + err.message);
+		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);
 	} else {
-		console.log("> Connected to database '3dpreview'");
+		console.log("> Connected to database '3dpreviewer'");
 	}
 });
 
