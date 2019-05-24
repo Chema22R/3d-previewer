@@ -1,7 +1,7 @@
 {
-  "name": "3dpreview",
+  "name": "3d-previewer",
   "version": "1.0.0",
-  "description": "HTML5 3D Printing Preview Control",
+  "description": "",
   "main": "server.js",
   "dependencies": {
     "express": "4.16.3",
