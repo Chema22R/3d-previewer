@@ -175,7 +175,8 @@ button {
 	top: 0;
 	bottom: 0;
 	left: 0;
-	
+
+	min-width: 230px;
 	max-width: 50%;
 
 	overflow-x: hidden;
@@ -265,6 +266,8 @@ button {
 }
 
 @media screen and (max-width: 370px) {
+	.fileList.menu {min-width: unset;}
+
 	.fileList.menu .fileList.name,
 	.fileList.menu .fileList.date {margin-right: 40px;}
 
