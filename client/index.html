@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -28,10 +27,12 @@
 		<div class="stateMessage"></div>
 
 		<div id="projectIntroContainer">
-			<div id="projectIntroBack"></div>
-			<img id="projectIntroImg" src="img/projectIntro.png" alt="Introduction Image">
-			<div id="projectIntroText"></div>
-			<!--<button id="projectIntroExit" class="icon-quit icon"></button>-->
+			<div id="projectIntroBack" onclick="fadeOut()"></div>
+			<div id="projectIntroContent">
+				<img id="projectIntroImg" src="img/projectIntro.png" alt="Introduction Image">
+				<p id="projectIntroText"></p>
+				<span id="projectIntroExit" onclick="fadeOut()">&times;</span>
+			</div>
 		</div>
 
 		<nav class="navbar top">
