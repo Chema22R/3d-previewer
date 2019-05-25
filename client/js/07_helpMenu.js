@@ -11,6 +11,7 @@ $(function() {
 
     $(".navbar.right .help.icon").click(function(e) {   // triggers the help menu
         e.preventDefault();
+        document.body.classList.add("noScroll");
         $(".help.wrapper").fadeIn("slow");
         $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
 
@@ -23,5 +24,6 @@ $(function() {
     $(".help.wrapper .help.leftover, .help.wrapper .help.menu .exitButton").on("mousedown touchstart", function(e) {   // closes the help menu
         e.preventDefault();
         $(".help.wrapper").fadeOut("slow");
+        document.body.classList.remove("noScroll");
     });
 });
