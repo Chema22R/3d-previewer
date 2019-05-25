@@ -3,8 +3,6 @@ html, body {
 	background-color: #202020;
 }
 
-body.noScroll {overflow: hidden;}
-
 .icon {
 	font-size: 40px;
 	color: white;
