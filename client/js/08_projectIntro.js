@@ -22,7 +22,7 @@ document.getElementById("projectIntroText").innerHTML = projectIntroText;
 document.getElementById("projectIntroContent").style.maxWidth = document.getElementById("projectIntroImg").offsetWidth + "px";
 setTimeout(() => {
     document.getElementById("projectIntroContent").style.maxWidth = "900px";
-}, 200);
+}, 500);
 
 
 /* Porject intro fade-out animation */
