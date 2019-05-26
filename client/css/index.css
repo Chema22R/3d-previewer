@@ -181,6 +181,7 @@ button {
 
 	overflow-x: hidden;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 
 	background: #EEE;
 }
@@ -376,6 +377,7 @@ button {
 	margin: 0 auto;
 
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .help.wrapper .help.menu .help.content.separator {

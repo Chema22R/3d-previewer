@@ -63,6 +63,7 @@ body.noScroll {overflow: hidden;}
 
     box-sizing: border-box;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     cursor: default;
     font-family: Arial, Helvetica, sans-serif;
