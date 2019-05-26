@@ -1,3 +1,5 @@
+"use strict";
+
 $(function() {
 	$(".navbar.top input[type='file'].fileUpload").change(function(e) {
 		e.preventDefault();

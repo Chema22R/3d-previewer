@@ -1,3 +1,5 @@
+"use strict";
+
 var controller3D;
 
 $(function() {

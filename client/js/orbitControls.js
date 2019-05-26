@@ -1,3 +1,5 @@
+"use strict";
+
 THREE.OrbitControls = function(object, renderer) {
     this.object = object;
     this.renderer = renderer;
