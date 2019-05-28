@@ -321,6 +321,17 @@ button {
 
 .help.wrapper {
 	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+
+	align-items: center;
+	justify-content: center;
+
+    opacity: 0;
+    transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
 }
 
 .help.wrapper .help.leftover {
@@ -329,24 +340,21 @@ button {
 	height: 100%;
 
 	background: #000;
-	opacity: 0.8;
+	opacity: 0.4;
 }
 
 .help.wrapper .help.menu {
-	display: flex;
-	align-content: center;
-
 	position: fixed;
-	top: 20%;
+	display: flex;
 
 	padding: 15px 10px;
 	max-width: 700px;
 	width: 60%;
 
+	align-content: center;
 	border-radius: 10px;
 
-	background: #FFF;
-	opacity: 0.8;
+	background: #f0f2f1;
 }
 
 .help.wrapper .help.menu .exitButton {
