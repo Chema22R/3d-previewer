@@ -38,7 +38,7 @@ function controller3D() {
 		});
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(wrapper.width(), wrapper.height());
-		renderer.setClearColor(0x202020);
+		renderer.setClearColor(0x303030);
 
 		// controls
 		controls = new THREE.OrbitControls(camera, renderer.domElement);
