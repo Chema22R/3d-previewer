@@ -1,29 +1,17 @@
 "use strict";
 
-$(function() {
-    $(window).resize(function() {   // centers the help menu to the window size (on window resize)
-		$(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
-	});
+function helpMenuFadeIn() {
+    document.getElementById("helpMenu").style.display = "flex";
+    document.getElementById("helpMenuTextL").scrollTop = 0;
+    document.getElementById("helpMenuTextR").scrollTop = 0;
+    setTimeout(() => {
+        document.getElementById("helpMenu").style.opacity = 1;
+    }, 50);
+}
 
-    $(window).on("orientationchange", function() {   // centers the help menu to the window size (on orientation change)
-        setTimeout(function() {
-		    $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
-        }, 500);
-	});
-
-    $(".navbar.right .help.icon").click(function(e) {   // triggers the help menu
-        e.preventDefault();
-        $(".help.wrapper").fadeIn("slow");
-        $(".help.wrapper .help.menu").css("left", (window.innerWidth - $(".help.wrapper .help.menu").innerWidth()) / 2);
-
-        setTimeout(function() {
-            $(".help.content").scrollTop(0);
-            $(".help.content").scrollLeft(0);
-        }, 10);
-    });
-
-    $(".help.wrapper .help.leftover, .help.wrapper .help.menu .exitButton").on("mousedown touchstart", function(e) {   // closes the help menu
-        e.preventDefault();
-        $(".help.wrapper").fadeOut("slow");
-    });
-});
+function helpMenuFadeOut() {
+    document.getElementById("helpMenu").style.opacity = 0;
+    setTimeout(() => {
+        document.getElementById("helpMenu").style.display = "none";
+    }, 500);
+}

@@ -61,7 +61,7 @@
 			</div>
 			<button class="wireframe icon-wireframe icon pointer" title="Toggle wireframe visualization"></button>
 			<button class="palette icon-palette icon pointer" title="Open palette menu"></button>
-			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h"></button>
+			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h" onclick="helpMenuFadeIn()"></button>
 		</nav>
 
 		
@@ -75,11 +75,11 @@
 			<div class="loadingBar loader"></div>
 		</div>
 
-		<div class="help wrapper">
-			<div class="help leftover"></div>
+		<div id="helpMenu" class="help wrapper">
+			<div class="help leftover" onclick="helpMenuFadeOut()"></div>
 			<div class="help menu">
-				<button class="exitButton icon-quit icon" title="Exit help menu"></button>
-				<div class="help content separator scroll">
+				<button class="exitButton icon-quit icon" title="Exit help menu" onclick="helpMenuFadeOut()"></button>
+				<div id="helpMenuTextL" class="help content separator scroll">
 					<h4>Objects Manipulation (mouse)</h4>
 					<p><b><i>Rotation</i></b> - left click</p>
 					<p><b><i>Panning</i></b> - right click</p>
@@ -93,7 +93,7 @@
 					<p><b><i>Panning</i></b> - three finger movement</p>
 					<p><b><i>Zoom</i></b> - two fingers pinching</p>
 				</div>
-				<div class="help content scroll">
+				<div id="helpMenuTextR" class="help content scroll">
 					<h4>Keyboard Shortcuts</h4>
 					<p><b><i>u</i></b> - upload files to server (+ <i>enter</i>)</p>
 					<p><b><i>f</i></b> - file list opening</p>
