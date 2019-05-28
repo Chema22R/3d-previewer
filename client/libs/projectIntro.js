@@ -6,6 +6,7 @@ document.body.classList.add("noScroll"); // Initial prevent scrolling while proj
 /* Text fade-in animation */
 
 document.getElementById("projectIntroContent").style.maxWidth = document.getElementById("projectIntroImg").offsetWidth + "px";
+document.getElementById("projectIntroText").style.display = "unset";
 setTimeout(() => {
     document.getElementById("projectIntroContent").style.maxWidth = "900px";
 }, 500);
