@@ -198,6 +198,7 @@ button {
 }
 
 .fileList.menu .fileList.entry {
+	display: flex;
 	margin-left: 3px;
 
 	font-family: Helvetica, Arial, sans-serif;
@@ -225,18 +226,17 @@ button {
 }
 
 .fileList.menu .fileList.name, .fileList.menu .fileList.date {
-	margin: 5px 5%;
-	margin-right: 60px;
-
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 .fileList.menu .fileList.name {
+	margin: 5px 60px 5px 5%;
 	font-weight: 700;
 }
 
 .fileList.menu .fileList.date {
+	margin: 5px 60px 8px 5%;
 	font-size: 0.8em;
 }
 
