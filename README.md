@@ -9,6 +9,8 @@ being able to select or delete the listed objects.
 In both ways, users can load an object into the interface, after which users can perform basic operations on the object, such as rotation,
 padding or zooming.
 
+Check out a real example of the application from [here](http://chema22r.duckdns.org/3dpreviewer).
+
 ## Setup and Run
 
 ## Directories Structure
