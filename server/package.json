@@ -1,7 +1,7 @@
 {
   "name": "3d-previewer",
   "version": "1.0.0",
-  "description": "3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects, enabling their analysis in detail.",
+  "description": "3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects, enabling their analysis in detail",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
