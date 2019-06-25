@@ -80,9 +80,9 @@ body.noScroll {overflow: hidden !important;}
 @media screen and (max-width: 660px) {
     #projectIntroImg {display: none;}
     #projectIntroText {
-        background-image: linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../img/projectIntro.png");
-        background-image: -moz-linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../img/projectIntro.png");
-        background-image: -webkit-linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../img/projectIntro.png");
+        background-image: linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../images/projectIntro.png");
+        background-image: -moz-linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../images/projectIntro.png");
+        background-image: -webkit-linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./../images/projectIntro.png");
         background-size: cover;
     }
 }
