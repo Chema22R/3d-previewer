@@ -13,7 +13,7 @@ $(function() {
 			$(".loadingBar.wrapper").fadeIn("slow");
 
 			$.ajax({
-				url: "http://"+serverAddress+":"+serverPort+"/file",
+				url: SERVER_URL+"/file",
 				method: "POST",
 				data: formData,
 				processData: false,

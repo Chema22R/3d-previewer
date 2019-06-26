@@ -8,7 +8,7 @@ $(function() {
         e.preventDefault();
         
         $.ajax({
-            url: "http://"+serverAddress+":"+serverPort+"/file",
+            url: SERVER_URL+"/file",
             method: "GET",
             success: function(res, status) {
                 entriesGenerator(res);
@@ -102,7 +102,7 @@ $(function() {
 			$(".loadingBar.wrapper").fadeIn("slow");
             
             $.ajax({
-                url: "http://"+serverAddress+":"+serverPort+"/file/" + id,
+                url: SERVER_URL+"/file/" + id,
                 method: "GET",
                 success: function(res, status) {
 					$(".loadingBar.wrapper").fadeOut("slow");
@@ -138,7 +138,7 @@ $(function() {
             var entry = this.parentNode;
             
             $.ajax({
-                url: "http://"+serverAddress+":"+serverPort+"/file/" + id,
+                url: SERVER_URL+"/file/" + id,
                 method: "DELETE",
                 success: function(res, status) {
                     $(entry).hide(400, "linear", function() {
