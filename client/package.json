@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Chema22R/3d-previewer#readme",
   "dependencies": {
     "jquery": "^3.4.1",
-    "project-intro": "^1.0.0",
+    "project-intro": "^1.1.0",
     "three.js": "^0.77.1"
   },
   "devDependencies": {
