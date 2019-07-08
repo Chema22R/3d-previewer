@@ -23,7 +23,7 @@ $(function() {
 
 					showMessage("File uploaded successfully", "green");
 					
-                    controller3D.loadMesh(res);
+                    window.controller3D.loadMesh(res);
 				},
 				error: function(jqXHR, status, err) {
 					$(".loadingBar.wrapper").fadeOut("slow");

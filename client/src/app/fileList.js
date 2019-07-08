@@ -115,7 +115,7 @@ $(function() {
                         $(".fileList.menu .fileList.search").val("");
                     });
 
-                    controller3D.loadMesh(res);
+                    window.controller3D.loadMesh(res);
                 },
                 error: function(jqXHR, status, err) {
 					$(".loadingBar.wrapper").fadeOut("slow");

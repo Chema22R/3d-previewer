@@ -22,7 +22,7 @@
 		<div class="stateMessage"></div>
 
 		<div id="projectIntroContainer">
-			<div id="projectIntroBack" onclick="projectIntroFadeOut()"></div>
+			<div id="projectIntroBack" onclick="projectIntro.fadeOut()"></div>
 			<div id="projectIntroContent">
 				<img id="projectIntroImg" src="./images/projectIntro.png" alt="Project Introduction Image">
 				<p id="projectIntroText">
@@ -34,7 +34,7 @@
 					ways, users can load an object into the interface, after which users can perform basic operations
 					on the object, such as rotation, padding or zooming.
 				</p>
-				<span id="projectIntroExit" onclick="projectIntroFadeOut()">&times;</span>
+				<span id="projectIntroExit" onclick="projectIntro.fadeOut()">&times;</span>
 			</div>
 		</div>
 
@@ -56,7 +56,7 @@
 			</div>
 			<button class="wireframe icon-wireframe icon pointer" title="Toggle wireframe visualization"></button>
 			<button class="palette icon-palette icon pointer" title="Open palette menu"></button>
-			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h" onclick="helpMenuFadeIn()"></button>
+			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h" onclick="helpMenu.fadeIn()"></button>
 		</nav>
 
 		
@@ -71,9 +71,9 @@
 		</div>
 
 		<div id="helpMenu" class="help wrapper">
-			<div class="help leftover" onclick="helpMenuFadeOut()"></div>
+			<div class="help leftover" onclick="helpMenu.fadeOut()"></div>
 			<div class="help menu">
-				<button class="exitButton icon-quit icon" title="Exit help menu" onclick="helpMenuFadeOut()"></button>
+				<button class="exitButton icon-quit icon" title="Exit help menu" onclick="helpMenu.fadeOut()"></button>
 				<div id="helpMenuTextL" class="help content separator scroll">
 					<h4>Objects Manipulation (mouse)</h4>
 					<p><b><i>Rotation</i></b> - left click</p>
