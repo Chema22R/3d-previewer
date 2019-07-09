@@ -15,4 +15,23 @@ Check out a real example of the application from [here](http://chema22r.duckdns.
 
 ## Directories Structure
 ```
+|- /client
+    |- /src
+        |- /app
+        |- /assets
+            |- /favicons
+            |- /icons
+            |- /images
+            |- /style
+        |- index.html
+        |- index.js
+    |- package.json
+    |- webpack.config.js
+    |- webpack.dev.js
+    |- webpack.prod.js
+|- /server
+    |- /
+|- .gitignore
+|- logCodes
+|- README.md
 ```
