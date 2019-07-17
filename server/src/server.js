@@ -15,7 +15,7 @@ var mongoose = require("mongoose");
 /* controllers
 ========================================================================== */
 
-var api = require("./controllers/api.js");
+var api = require("./app/api.js");
 
 
 /* app configuration

@@ -13,7 +13,7 @@ var zlib = require("zlib");
 ========================================================================== */
 
 var Parser = require("./parser.js");
-var Geometry = require("./../models/model.js");
+var Geometry = require("./geometryModel.js");
 
 
 /* Directories
