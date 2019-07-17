@@ -60,7 +60,8 @@ app.listen(serverPort, function () {
 });
 
 mongoose.connect(uri, {
-	useNewUrlParser: true
+	useNewUrlParser: true,
+	useFindAndModify: false
 }, function(err) {
 	if (err) {
 		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);
