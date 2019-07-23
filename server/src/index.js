@@ -56,7 +56,7 @@ app.listen(SERVER_PORT, function () {
 	console.log("> 3D Preview server running on http://localhost:" + SERVER_PORT);
 });
 
-mongoose.connect(DATABASE_URL, {
+mongoose.connect(DATABASE_URI, {
 	useNewUrlParser: true,
 	useFindAndModify: false
 }, function(err) {
