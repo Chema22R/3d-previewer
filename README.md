@@ -1,3 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/82add870-d40a-4845-ae9c-c79825808ff1/deploy-status)](https://app.netlify.com/sites/3dpreviewer/deploys)
+[![dependencies Status](https://david-dm.org/chema22r/3dpreviewer/status.svg)](https://david-dm.org/chema22r/3dpreviewer)
+[![devDependencies Status](https://david-dm.org/chema22r/3dpreviewer/dev-status.svg)](https://david-dm.org/chema22r/3dpreviewer?type=dev)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Chema22R/3dpreviewer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Chema22R/3dpreviewer/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Chema22R/3dpreviewer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Chema22R/3dpreviewer/context:javascript)
+
 # 3D Previewer
 This applications is a 3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects,
 enabling their analysis in detail.
