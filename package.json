@@ -4,6 +4,8 @@
     "description": "3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects, enabling their analysis in detail",
     "scripts": {
         "build": "concurrently 'npm run build --prefix client' 'npm run build --prefix server'",
+        "heroku-prebuild": "npm i --production=false --prefix server",
+        "heroku-postbuild": "npm run build --prefix server && cd server/dist && node index.js",
         "i": "[ -d node_modules ] && (concurrently 'npm i' 'npm i --prefix client' 'npm i --prefix server') || (npm i && npm i --prefix client && npm i --prefix server)",
         "start": "concurrently 'npm start --prefix client' 'npm start --prefix server'",
         "test": "echo \"Error: no test specified\" && exit 1"
