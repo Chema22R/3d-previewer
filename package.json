@@ -1,24 +1,24 @@
 {
-  "name": "3d-previewer",
-  "version": "1.0.0",
-  "description": "3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects, enabling their analysis in detail",
-  "scripts": {
-    "i": "concurrently 'npm i' 'npm i --prefix client' 'npm i --prefix server'",
-    "build": "concurrently 'npm run build --prefix client' 'npm run build --prefix server'",
-    "start": "concurrently 'npm start --prefix client' 'npm start --prefix server'",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chema22R/3d-previewer.git"
-  },
-  "author": "Jose Maria Rivera Alonso (https://github.com/Chema22R)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Chema22R/3d-previewer/issues"
-  },
-  "homepage": "https://github.com/Chema22R/3d-previewer#readme",
-  "dependencies": {
-    "concurrently": "^4.1.2"
-  }
+    "name": "3d-previewer",
+    "version": "1.0.0",
+    "description": "3D objects previewer that allows users to interact and carry out certain basic operations on loaded objects, enabling their analysis in detail",
+    "scripts": {
+        "i": "concurrently 'npm i' 'npm i --prefix client' 'npm i --prefix server'",
+        "build": "concurrently 'npm run build --prefix client' 'npm run build --prefix server'",
+        "start": "concurrently 'npm start --prefix client' 'npm start --prefix server'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Chema22R/3d-previewer.git"
+    },
+    "author": "Jose Maria Rivera Alonso (https://github.com/Chema22R)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Chema22R/3d-previewer/issues"
+    },
+    "homepage": "https://github.com/Chema22R/3d-previewer#readme",
+    "dependencies": {
+        "concurrently": "^4.1.2"
+    }
 }
