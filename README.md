@@ -58,5 +58,6 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
 |- LICENSE
 |- logCodes
 |- package.json
+|- Procfile
 |- README.md
 ```
