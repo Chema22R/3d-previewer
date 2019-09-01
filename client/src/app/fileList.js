@@ -115,7 +115,11 @@ $(function() {
                         $(".fileList.menu .fileList.search").val("");
                     });
 
-                    window.controller3D.loadMesh(res);
+                    if (typeof res == "object") {
+                        window.controller3D.loadMesh(res);
+                    } else {
+                        showMessage("File no longer exists", "red");
+                    }
                 },
                 error: function(jqXHR, status, err) {
 					$(".loadingBar.wrapper").fadeOut("slow");
