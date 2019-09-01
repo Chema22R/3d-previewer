@@ -6,30 +6,25 @@
 		<meta name="author" content="Jose Maria Rivera Alonso"/>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 
-		<link rel="stylesheet" type="text/css" href="css/normalize.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="stylesheet" type="text/css" href="css/projectIntro.css">
-		<link rel="stylesheet" type="text/css" href="css/colorPicker.css">
+		<link rel="stylesheet" href="./icons/style.css">
+		<link rel="stylesheet" href="./icons/ie7/ie7.css">
 
-		<link rel="stylesheet" href="fonts/icomoon/style.css">
-		<link rel="stylesheet" href="fonts/icomoon/ie7/ie7.css">
-
-		<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-		<link rel="manifest" href="img/favicons/manifest.json">
-		<link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#be0000">
-		<link rel="shortcut icon" href="img/favicons/favicon.ico">
-		<meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+		<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+		<link rel="manifest" href="./favicons/manifest.json">
+		<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#be0000">
+		<link rel="shortcut icon" href="./favicons/favicon.ico">
+		<meta name="msapplication-config" content="./favicons/browserconfig.xml">
 		<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 		<div class="stateMessage"></div>
 
 		<div id="projectIntroContainer">
-			<div id="projectIntroBack" onclick="projectIntrofadeOut()"></div>
+			<div id="projectIntroBack" onclick="projectIntro.fadeOut()"></div>
 			<div id="projectIntroContent">
-				<img id="projectIntroImg" src="img/projectIntro.png" alt="Introduction Image">
+				<img id="projectIntroImg" src="./images/projectIntro.png" alt="Project Introduction Image">
 				<p id="projectIntroText">
 					This applications is a 3D objects previewer that allows users to interact and carry out certain basic
 					operations on loaded objects, enabling their analysis in detail.<br>The main interface (right button)
@@ -39,7 +34,7 @@
 					ways, users can load an object into the interface, after which users can perform basic operations
 					on the object, such as rotation, padding or zooming.
 				</p>
-				<span id="projectIntroExit" onclick="projectIntrofadeOut()">&times;</span>
+				<span id="projectIntroExit" onclick="projectIntro.fadeOut()">&times;</span>
 			</div>
 		</div>
 
@@ -61,7 +56,7 @@
 			</div>
 			<button class="wireframe icon-wireframe icon pointer" title="Toggle wireframe visualization"></button>
 			<button class="palette icon-palette icon pointer" title="Open palette menu"></button>
-			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h" onclick="helpMenuFadeIn()"></button>
+			<button class="help icon-help-circle icon pointer" title="Open help menu" accesskey="h" onclick="helpMenu.fadeIn()"></button>
 		</nav>
 
 		
@@ -76,9 +71,9 @@
 		</div>
 
 		<div id="helpMenu" class="help wrapper">
-			<div class="help leftover" onclick="helpMenuFadeOut()"></div>
+			<div class="help leftover" onclick="helpMenu.fadeOut()"></div>
 			<div class="help menu">
-				<button class="exitButton icon-quit icon" title="Exit help menu" onclick="helpMenuFadeOut()"></button>
+				<button class="exitButton icon-quit icon" title="Exit help menu" onclick="helpMenu.fadeOut()"></button>
 				<div id="helpMenuTextL" class="help content separator scroll">
 					<h4>Objects Manipulation (mouse)</h4>
 					<p><b><i>Rotation</i></b> - left click</p>
@@ -113,14 +108,5 @@
 			<canvas class="previewControl">
 			</canvas>
 		</div>
-
-
-		<!-- JS -->
-		<script src="libs/jquery-3.1.1.min.js" type="text/javascript"></script>
-		<script src="libs/three.min.js" type="text/javascript"></script>
-		<script src="libs/colorPicker.js" type="text/javascript"></script>
-		<script src="libs/projectIntro.js" type="text/javascript"></script>
-
-		<script src="js.min.js" type="text/javascript"></script>
 	</body>
 </html>

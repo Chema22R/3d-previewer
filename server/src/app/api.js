@@ -13,7 +13,7 @@ var zlib = require("zlib");
 ========================================================================== */
 
 var Parser = require("./parser.js");
-var Geometry = require("./../models/model.js");
+var Geometry = require("./geometryModel.js");
 
 
 /* Directories
@@ -41,7 +41,7 @@ exports.upload = function(req, res) {
 			writeLog(40, [filename, dataChunks.length]);
 
 			/* File assembly */
-			var data = new Buffer(dataLength);
+			var data = new Buffer.alloc(dataLength);
 
 			for (var i=0, pos=0; i<dataChunks.length; i++) {
 				dataChunks[i].copy(data, pos);
@@ -75,7 +75,7 @@ exports.upload = function(req, res) {
 
 				Geometry.create({
 					name: fileName,
-					path: __dirname.replace("controllers", "") + "files/" + uuid()
+					path: "./files/" + uuid()
 				}, function(err, query) {
 					if (err) {
 						writeLog(13, [fileName, err.message]);
@@ -161,7 +161,7 @@ exports.getById = function(req, res) {
 				res.sendStatus(500);
 			} else if (query) {
 				var data = fs.readFileSync(query.path);
-				var inflated = zlib.inflateSync(new Buffer(data));
+				var inflated = zlib.inflateSync(new Buffer.from(data));
 				var geometry = JSON.parse(inflated);
 				
 				writeLog(30, req.params.id);

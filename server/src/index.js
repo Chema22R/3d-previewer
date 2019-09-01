@@ -15,7 +15,7 @@ var mongoose = require("mongoose");
 /* controllers
 ========================================================================== */
 
-var api = require("./controllers/api.js");
+var api = require("./app/api.js");
 
 
 /* app configuration
@@ -52,15 +52,13 @@ if (fs.existsSync(app.locals.logPath)) {
 /* connections
 ========================================================================== */
 
-var serverPort = 8081;
-var uri = "mongodb://localhost/3dpreviewer";
-
-app.listen(serverPort, function () {
-	console.log("> 3D Preview server running on http://localhost:" + serverPort);
+app.listen(process.env.PORT || DEFAULT_PORT, function () {
+	console.log("> 3D Preview server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
 });
 
-mongoose.connect(uri, {
-	useMongoClient: true
+mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
+	useNewUrlParser: true,
+	useFindAndModify: false
 }, function(err) {
 	if (err) {
 		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);

@@ -1,11 +1,7 @@
 "use strict";
 
-var controller3D;
-
-$(function() {
-	controller3D = new controller3D();
-	controller3D.init();
-});
+window.controller3D = new controller3D();
+window.controller3D.init();
 
 function controller3D() {
 	var scene, camera, light, renderer, controls, material, materialWF, boundingBox, geometry, mesh;
@@ -46,13 +42,13 @@ function controller3D() {
 		// materials
 		material = new THREE.MeshPhongMaterial({
 			color: 0xaaaaaa,
-			shading: THREE.FlatShading,
+			flatShading: THREE.FlatShading,
 			wireframe: false
 		});
 
 		materialWF = new THREE.MeshBasicMaterial({
 			color: 0xaaaaaa,
-			shading: THREE.SmoothShading,
+			flatShading: THREE.SmoothShading,
 			wireframe: true,
 			wireframeLinewidth: 1
 		});
@@ -81,7 +77,7 @@ function controller3D() {
 
 		// mesh
 		mesh = new THREE.Mesh(geometry, material);
-		originalSize = boundingBox.setFromObject(mesh).getSize();
+		originalSize = boundingBox.setFromObject(mesh).getSize(new THREE.Vector3());
 
 		if ((originalSize.x < 100) && (originalSize.y < 100) && (originalSize.z < 100) ||
 			(originalSize.x > 100) || (originalSize.y > 100) || (originalSize.z > 100)) {	// scales the mesh to a standard size
