@@ -160,12 +160,16 @@ exports.getById = function(req, res) {
 				writeLog(11, [req.params.id, err.message]);
 				res.sendStatus(500);
 			} else if (query) {
-				var data = fs.readFileSync(query.path);
-				var inflated = zlib.inflateSync(new Buffer.from(data));
-				var geometry = JSON.parse(inflated);
-				
-				writeLog(30, req.params.id);
-				res.status(200).json(geometry);
+				if (fs.existsSync(query.path)) {
+					let data = fs.readFileSync(query.path);
+					let inflated = zlib.inflateSync(new Buffer.from(data));
+					let geometry = JSON.parse(inflated);
+
+					writeLog(30, req.params.id);
+					res.status(200).json(geometry);
+				} else {
+					removeLostFile();
+				}
 			} else {
 				writeLog(20, req.params.id);
 				res.sendStatus(404);
@@ -174,6 +178,27 @@ exports.getById = function(req, res) {
 	} else {
 		writeLog(10, null);
 		res.sendStatus(500);
+	}
+
+	function removeLostFile() {
+		Geometry.findOneAndRemove({
+			_id: req.params.id
+		}, {
+			select: {
+				_id: 0
+			}
+		}, function(err, query) {
+			if (err) {
+				writeLog(12, [req.params.id, err.message]);
+				res.sendStatus(500);
+			} else if (query) {
+				writeLog(31, req.params.id);
+				res.sendStatus(200);
+			} else {
+				writeLog(21, req.params.id);
+				res.sendStatus(404);
+			}
+		});
 	}
 
 	function writeLog(code, info) {

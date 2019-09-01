@@ -19,10 +19,13 @@ GETALL
 GETBYID
     10  Database disconnected
     11  Error at getting geometry (specified file id, error message)
+    12  Error at removing lost geometry (specified file id, error message)
 
-    20  File not found (specified file id)
+    20  File to retrieve not found (specified file id)
+    21  File to remove not found (specified file id)
 
     30  Geometry obtained (specified file id)
+    31  Geometry lost and removed (specified file id)
 
 DELETEBYID
     10  Database disconnected
