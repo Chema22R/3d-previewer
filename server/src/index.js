@@ -52,11 +52,11 @@ if (fs.existsSync(app.locals.logPath)) {
 /* connections
 ========================================================================== */
 
-app.listen(SERVER_PORT, function () {
-	console.log("> 3D Preview server running on http://localhost:" + SERVER_PORT);
+app.listen(process.env.PORT || DEFAULT_PORT, function () {
+	console.log("> 3D Preview server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
 });
 
-mongoose.connect(DATABASE_URI, {
+mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 	useNewUrlParser: true,
 	useFindAndModify: false
 }, function(err) {
