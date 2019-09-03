@@ -20,9 +20,10 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
 ## Setup and Run
 1. Download the source code
 2. Install the node modules executing `npm run i`
-3. Execute one of the following commands
-    - `npm start` to run the application in live-reload mode (development)
-    - `npm run build` to build the application (production)
+3. Execute one of the following commands to build the application
+    - `npm run build` (production)
+    - `npm run build:dev` (development)
+4. The build code can be found in `./client/dist` and `./server/dist`
 
 ## Directories Structure
 ```
@@ -58,6 +59,5 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
 |- LICENSE
 |- logCodes
 |- package.json
-|- Procfile
 |- README.md
 ```
