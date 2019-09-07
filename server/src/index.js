@@ -16,6 +16,7 @@ var mongoose = require("mongoose");
 ========================================================================== */
 
 var api = require("./app/api.js");
+var databaseInit = require("./app/databaseInit.js");
 
 
 /* app configuration
@@ -25,7 +26,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-/* log
+/* log and files
 ========================================================================== */
 
 app.locals.logPath = './log.json';
@@ -48,6 +49,8 @@ if (fs.existsSync(app.locals.logPath)) {
 	fs.writeFileSync(app.locals.logPath, JSON.stringify(app.locals.logger), {encoding: 'utf8', flag: 'w'});
 }
 
+if (!fs.existsSync("./files")) {fs.mkdirSync("./files");}
+
 
 /* connections
 ========================================================================== */
@@ -64,6 +67,8 @@ mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);
 	} else {
 		console.log("> Connected to database '3dpreviewer'");
+		databaseInit.deleteOldRecords();
+		databaseInit.loadDefaultDB();
 	}
 });
 

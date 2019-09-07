@@ -16,12 +16,6 @@ var Parser = require("./parser.js");
 var Geometry = require("./geometryModel.js");
 
 
-/* Directories
-========================================================================== */
-
-if (!fs.existsSync("./files")) {fs.mkdirSync("./files");}
-
-
 /* API
 ========================================================================== */
 
