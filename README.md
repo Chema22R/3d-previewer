@@ -47,6 +47,7 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
     |- webpack.dev.js
     |- webpack.prod.js
 |- /server
+    |- files_default
     |- /src
         |- /app
             |- ...

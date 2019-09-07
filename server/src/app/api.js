@@ -16,12 +16,6 @@ var Parser = require("./parser.js");
 var Geometry = require("./geometryModel.js");
 
 
-/* Directories
-========================================================================== */
-
-if (!fs.existsSync("./files")) {fs.mkdirSync("./files");}
-
-
 /* API
 ========================================================================== */
 
@@ -231,7 +225,9 @@ exports.deleteById = function(req, res) {
 				writeLog(11, [req.params.id, err.message]);
 				res.sendStatus(500);
 			} else if (query) {
-				fs.unlinkSync(query.path);
+				if (fs.existsSync(query.path)) {
+					fs.unlinkSync(query.path);
+				}
 
 				writeLog(30, req.params.id);
 				res.sendStatus(200);
