@@ -29,7 +29,7 @@ $(function() {
         if (res.length == 0) {
             $(".fileList.entries").css({"padding": "30px 0", "text-align": "center"}).text("No items to display");
         } else {
-            $(".fileList.entries").css("padding", "0px");
+            $(".fileList.entries").css({"padding": "0", "text-align": "unset"});
 
             for (var i=0; i<res.length; i++) {
                 $("<div class='" + res[i]._id + " fileList entry'>" +
@@ -43,13 +43,15 @@ $(function() {
             }
         }
 
-        $(".loadingBar.wrapper").fadeOut("fast");
-        $(".fileList.menu").fadeIn("slow");
-
-        setTimeout(function() {
+        setTimeout(() => {
+            $(".loadingBar.wrapper").fadeOut("fast");
+            $(".fileList.menu").fadeIn("slow");
             $(".fileList.menu").scrollTop(0);
+        }, 100);
+
+        setTimeout(() => {
             delayedLoad();
-        }, 10);
+        }, 120);
     }
 
 

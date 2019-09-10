@@ -23,7 +23,7 @@ const defaultFiles = [
     },
     {
         "_id" : "5d72c83b136109091998208b",
-        "name" : "Porsche 911 GT2.obj",
+        "name" : "Porsche 911.obj",
         "path" : "./files/44181462-d8c1-4d9a-9d59-a8628a9e5e31"
     },
     {
