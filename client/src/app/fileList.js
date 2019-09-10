@@ -27,7 +27,7 @@ $(function() {
 
     function entriesGenerator(res) {
         if (res.length == 0) {
-            $(".fileList.entries").css("padding", "30px").text("No items to display");
+            $(".fileList.entries").css({"padding": "30px 0", "text-align": "center"}).text("No items to display");
         } else {
             $(".fileList.entries").css("padding", "0px");
 
@@ -153,7 +153,7 @@ $(function() {
                     $(".loadingBar.wrapper").fadeOut("fast");
                     $(entry).hide(400, "linear", function() {
                         if (entry.parentNode.childNodes.length === 1) {
-                            $(".fileList.entries").css("padding", "30px").text("No items to display");
+                            $(".fileList.entries").css({"padding": "30px 0", "text-align": "center"}).text("No items to display");
                         }
                         entry.remove();
                     });
