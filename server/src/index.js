@@ -19,10 +19,17 @@ var api = require("./app/api.js");
 var databaseInit = require("./app/databaseInit.js");
 
 
+/* cors configuration
+========================================================================== */
+
+var corsOpts = {
+	origin: process.env.CORS_ORIGIN || DEFAULT_CORS_ORIGIN
+};
+
+
 /* app configuration
 ========================================================================== */
 
-app.use(cors());
 app.use(bodyParser.json());
 
 
@@ -76,8 +83,8 @@ mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 /* API
 ========================================================================== */
 
-app.get('/file', api.getAll);
-app.post('/file', api.upload);
+app.get('/file', cors(corsOpts), api.getAll);
+app.post('/file', cors(corsOpts), api.upload);
 
-app.get('/file/:id', api.getById);
-app.delete('/file/:id', api.deleteById);
+app.get('/file/:id', cors(corsOpts), api.getById);
+app.delete('/file/:id', cors(corsOpts), api.deleteById);
