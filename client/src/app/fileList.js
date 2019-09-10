@@ -6,7 +6,9 @@ $(function() {
 
     $(".navbar.top .fileList.icon").click(function(e) {
         e.preventDefault();
-        
+
+        $(".loadingBar.wrapper").fadeIn("fast");
+
         $.ajax({
             url: SERVER_URL+"/file",
             method: "GET",
@@ -41,6 +43,7 @@ $(function() {
             }
         }
 
+        $(".loadingBar.wrapper").fadeOut("fast");
         $(".fileList.menu").fadeIn("slow");
 
         setTimeout(function() {
@@ -99,13 +102,13 @@ $(function() {
             var id = $(this).attr("class").split(" ")[0];
             var entries = this.parentNode.parentNode;
 
-			$(".loadingBar.wrapper").fadeIn("slow");
+			$(".loadingBar.wrapper").fadeIn("fast");
             
             $.ajax({
                 url: SERVER_URL+"/file/" + id,
                 method: "GET",
                 success: function(res, status) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 
                     $(".fileList.menu").fadeOut("slow", function() {
                         while (entries.childNodes.length > 0) {
@@ -122,7 +125,7 @@ $(function() {
                     }
                 },
                 error: function(jqXHR, status, err) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 
                     if (!err) {
                         showMessage("Unable to connect to server", "red");
