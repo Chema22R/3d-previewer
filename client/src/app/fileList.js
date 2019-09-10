@@ -6,7 +6,9 @@ $(function() {
 
     $(".navbar.top .fileList.icon").click(function(e) {
         e.preventDefault();
-        
+
+        $(".loadingBar.wrapper").fadeIn("fast");
+
         $.ajax({
             url: SERVER_URL+"/file",
             method: "GET",
@@ -25,7 +27,7 @@ $(function() {
 
     function entriesGenerator(res) {
         if (res.length == 0) {
-            $(".fileList.entries").css("padding", "30px").text("No hay elementos para mostrar");
+            $(".fileList.entries").css({"padding": "30px 0", "text-align": "center"}).text("No items to display");
         } else {
             $(".fileList.entries").css("padding", "0px");
 
@@ -41,6 +43,7 @@ $(function() {
             }
         }
 
+        $(".loadingBar.wrapper").fadeOut("fast");
         $(".fileList.menu").fadeIn("slow");
 
         setTimeout(function() {
@@ -99,13 +102,13 @@ $(function() {
             var id = $(this).attr("class").split(" ")[0];
             var entries = this.parentNode.parentNode;
 
-			$(".loadingBar.wrapper").fadeIn("slow");
+			$(".loadingBar.wrapper").fadeIn("fast");
             
             $.ajax({
                 url: SERVER_URL+"/file/" + id,
                 method: "GET",
                 success: function(res, status) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 
                     $(".fileList.menu").fadeOut("slow", function() {
                         while (entries.childNodes.length > 0) {
@@ -122,7 +125,7 @@ $(function() {
                     }
                 },
                 error: function(jqXHR, status, err) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 
                     if (!err) {
                         showMessage("Unable to connect to server", "red");
@@ -140,12 +143,18 @@ $(function() {
 
             var id = $(this).attr("class").split(" ")[0];
             var entry = this.parentNode;
+
+            $(".loadingBar.wrapper").fadeIn("fast");
             
             $.ajax({
                 url: SERVER_URL+"/file/" + id,
                 method: "DELETE",
                 success: function(res, status) {
+                    $(".loadingBar.wrapper").fadeOut("fast");
                     $(entry).hide(400, "linear", function() {
+                        if (entry.parentNode.childNodes.length === 1) {
+                            $(".fileList.entries").css({"padding": "30px 0", "text-align": "center"}).text("No items to display");
+                        }
                         entry.remove();
                     });
                 },

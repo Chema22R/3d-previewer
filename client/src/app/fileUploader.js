@@ -10,7 +10,7 @@ $(function() {
 			var formData = new FormData();
 			formData.append("file", file);
 
-			$(".loadingBar.wrapper").fadeIn("slow");
+			$(".loadingBar.wrapper").fadeIn("fast");
 
 			$.ajax({
 				url: SERVER_URL+"/file",
@@ -19,14 +19,14 @@ $(function() {
 				processData: false,
 				contentType: false,
 				success: function(res, status) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 
 					showMessage("File uploaded successfully", "green");
 					
                     window.controller3D.loadMesh(res);
 				},
 				error: function(jqXHR, status, err) {
-					$(".loadingBar.wrapper").fadeOut("slow");
+					$(".loadingBar.wrapper").fadeOut("fast");
 					
 					if (!err) {
 						showMessage("Unable to connect to server", "red");
