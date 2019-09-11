@@ -24,6 +24,8 @@ $(function() {
                 }
             },
             error: function(jqXHR, status, err) {
+                $(".loadingBar.wrapper").fadeOut("fast");
+
                 if (!err) {
                     showMessage("Unable to connect to server", "red");
                 } else {
@@ -167,6 +169,8 @@ $(function() {
                     });
                 },
                 error: function(jqXHR, status, err) {
+                    $(".loadingBar.wrapper").fadeOut("fast");
+
                     if (!err) {
                         showMessage("Unable to connect to server", "red");
                     } else {
