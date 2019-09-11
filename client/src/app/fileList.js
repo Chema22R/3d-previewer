@@ -9,11 +9,19 @@ $(function() {
 
         $(".loadingBar.wrapper").fadeIn("fast");
 
+        getFileList(0);
+    });
+
+    function getFileList(attempts) {
         $.ajax({
             url: SERVER_URL+"/file",
             method: "GET",
             success: function(res, status) {
-                entriesGenerator(res);
+                if (res.length === 0 && attempts === 0) {
+                    getFileList(++attempts);
+                } else {
+                    entriesGenerator(res);
+                }
             },
             error: function(jqXHR, status, err) {
                 $(".loadingBar.wrapper").fadeOut("fast");
@@ -25,7 +33,7 @@ $(function() {
                 }
             }
         });
-    });
+    }
 
     function entriesGenerator(res) {
         if (res.length == 0) {
@@ -45,15 +53,13 @@ $(function() {
             }
         }
 
-        setTimeout(() => {
-            $(".loadingBar.wrapper").fadeOut("fast");
-            $(".fileList.menu").fadeIn("slow");
-            $(".fileList.menu").scrollTop(0);
-        }, 100);
+        $(".loadingBar.wrapper").fadeOut("fast");
+        $(".fileList.menu").fadeIn("slow");
 
         setTimeout(() => {
+            $(".fileList.menu").scrollTop(0);
             delayedLoad();
-        }, 120);
+        }, 10);
     }
 
 
