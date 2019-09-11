@@ -17,8 +17,10 @@ $(function() {
             url: SERVER_URL+"/file",
             method: "GET",
             success: function(res, status) {
-                if (res.length === 0 && attempts === 0) {
-                    getFileList(++attempts);
+                if (res.length === 0 && attempts < 2) {
+                    setTimeout(() => {
+                        getFileList(++attempts);
+                    }, 1000);
                 } else {
                     entriesGenerator(res);
                 }
