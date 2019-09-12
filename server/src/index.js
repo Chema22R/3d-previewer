@@ -25,6 +25,7 @@ var databaseInit = require("./app/databaseInit.js");
 var corsOpts = {
 	origin: process.env.CORS_ORIGIN || DEFAULT_CORS_ORIGIN
 };
+app.options("/file/:id", cors(corsOpts));	// enable pre-flight request
 
 
 /* app configuration
