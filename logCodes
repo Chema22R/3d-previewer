@@ -34,3 +34,8 @@ DELETEBYID
     20  File not found (specified file id)
 
     30  Geometry removed (specified file id)
+
+CHECKSTATUS
+    10  Database disconnected
+
+    20  Database connected
