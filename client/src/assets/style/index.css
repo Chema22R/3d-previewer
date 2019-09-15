@@ -29,6 +29,10 @@ button {
 	overflow: hidden;
 }
 
+canvas.previewControl {
+	display: none;
+}
+
 
 /* State Message
    ========================================================================== */
