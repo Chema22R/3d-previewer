@@ -255,3 +255,28 @@ exports.deleteById = function(req, res) {
         }
     }
 };
+
+
+exports.checkStatus = function(req, res) {
+	if (mongoose.connection.readyState === 1) {
+		writeLog(20, null);
+		res.sendStatus(200);
+	} else {
+		writeLog(10, null);
+		res.sendStatus(500);
+	}
+
+	function writeLog(code, info) {
+        if (code < req.app.locals.logger.level) {
+            req.app.locals.logger.history.push({
+                date: new Date(),
+                origin: req.connection.remoteAddress,
+                request: 'CHECKSTATUS',
+                code: code,
+                info: info
+            });
+
+            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
+        }
+    }
+};
