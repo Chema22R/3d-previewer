@@ -120,9 +120,12 @@ $(function() {
                 url: SERVER_URL+"/file/" + id,
                 method: "GET",
                 success: function(res, status) {
-					$(".loadingBar.wrapper").fadeOut("fast");
+                    $(".loadingBar.wrapper").fadeOut("fast");
 
-                    $(".fileList.menu").fadeOut("slow", function() {
+                    $(".fileList.menu, canvas.particles-js-canvas-el").fadeOut("slow", () => {
+                        $("canvas.particles-js-canvas-el").remove();
+                        $("canvas.previewControl").css("display", "unset");
+
                         while (entries.childNodes.length > 0) {
                             entries.childNodes[0].remove();
                         }

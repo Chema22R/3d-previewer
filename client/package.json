@@ -21,6 +21,7 @@
     "homepage": "https://github.com/Chema22R/3d-previewer#readme",
     "dependencies": {
         "jquery": "^3.4.1",
+        "particles.js": "^2.0.0",
         "project-intro": "^2.0.0",
         "three": "^0.106.2"
     },
