@@ -259,8 +259,18 @@ exports.deleteById = function(req, res) {
 
 exports.checkStatus = function(req, res) {
 	if (mongoose.connection.readyState === 1) {
-		writeLog(20, null);
-		res.sendStatus(200);
+		Geometry.find({}, {
+			_id: 0,
+			name: 1
+		}, function(err, query) {
+			if (err) {
+				writeLog(11, err.message);
+				res.sendStatus(500);
+			} else {
+				writeLog(30, null);
+				res.sendStatus(200);
+			}
+		});
 	} else {
 		writeLog(10, null);
 		res.sendStatus(500);
