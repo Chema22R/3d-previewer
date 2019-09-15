@@ -37,6 +37,6 @@ DELETEBYID
 
 CHECKSTATUS
     10  Database disconnected
-    11  Error accessing Geometry collection (error message)
+    11  Error accessing Geometries collection (error message)
 
-    30  Database connected and Geometry collection accessible
+    30  Database connected and Geometries collection accessible
