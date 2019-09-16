@@ -70,7 +70,7 @@ var stl = function() {
 	}
 
 	function parseASCII(data) {
-		var length, patternFace, patternNormal, patternVertex, result, text;
+		var patternFace, patternNormal, patternVertex, result, text;
 		patternFace = /facet([\s\S]*?)endfacet/g;
 
 		var vertices = [];
@@ -78,13 +78,13 @@ var stl = function() {
 
 		while ((result = patternFace.exec(data)) !== null) {
 			text = result[0];
-			patternNormal = /normal[\s]+([\-+]?[0-9]+\.?[0-9]*([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+/g;
+			patternNormal = /normal[\s]+([\-+]?[0-9]+\.?[0-9]*([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+/g;	// lgtm [js/redos]
 
 			while ((result = patternNormal.exec(text)) !== null) {
                 normals.push(parseFloat(result[1]), parseFloat(result[3]), parseFloat(result[5]));
 			}
 
-			patternVertex = /vertex[\s]+([\-+]?[0-9]+\.?[0-9]*([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+/g;
+			patternVertex = /vertex[\s]+([\-+]?[0-9]+\.?[0-9]*([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+[\s]+([\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?)+/g;	// lgtm [js/redos]
 
 			while ((result = patternVertex.exec(text)) !== null) {
 				vertices.push(parseFloat(result[1]), parseFloat(result[3]), parseFloat(result[5]));
@@ -437,13 +437,13 @@ var obj = function() {
 		text = text.toString();
 
 		var pattern = {
-			vertex: /^v\s+([\d|\.|\+|\-|e|E]+)\s+([\d|\.|\+|\-|e|E]+)\s+([\d|\.|\+|\-|e|E]+)/,
-			normal: /^vn\s+([\d|\.|\+|\-|e|E]+)\s+([\d|\.|\+|\-|e|E]+)\s+([\d|\.|\+|\-|e|E]+)/,
-			uv: /^vt\s+([\d|\.|\+|\-|e|E]+)\s+([\d|\.|\+|\-|e|E]+)/,
-			face_vertex: /^f\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)(?:\s+(-?\d+))?/,
-			face_vertex_uv: /^f\s+(-?\d+)\/(-?\d+)\s+(-?\d+)\/(-?\d+)\s+(-?\d+)\/(-?\d+)(?:\s+(-?\d+)\/(-?\d+))?/,
-			face_vertex_uv_normal: /^f\s+(-?\d+)\/(-?\d+)\/(-?\d+)\s+(-?\d+)\/(-?\d+)\/(-?\d+)\s+(-?\d+)\/(-?\d+)\/(-?\d+)(?:\s+(-?\d+)\/(-?\d+)\/(-?\d+))?/,
-			face_vertex_normal: /^f\s+(-?\d+)\/\/(-?\d+)\s+(-?\d+)\/\/(-?\d+)\s+(-?\d+)\/\/(-?\d+)(?:\s+(-?\d+)\/\/(-?\d+))?/
+			vertex: /^v(\s+([\d|\.|\+|\-|e|E]+)){3}/,
+			normal: /^vn(\s+([\d|\.|\+|\-|e|E]+)){3}/,
+			uv: /^vt(\s+([\d|\.|\+|\-|e|E]+)){2}/,
+			face_vertex: /^f(\s+(-?\d+)){3}(?:\s+(-?\d+))?/,
+			face_vertex_uv: /^f(\s+(-?\d+)\/(-?\d+)){3}(?:\s+(-?\d+)\/(-?\d+))?/,
+			face_vertex_uv_normal: /^f(\s+(-?\d+)\/(-?\d+)\/(-?\d+)){3}(?:\s+(-?\d+)\/(-?\d+)\/(-?\d+))?/,
+			face_vertex_normal: /^f(\s+(-?\d+)\/\/(-?\d+)){3}(?:\s+(-?\d+)\/\/(-?\d+))?/
 		};
 
 		var controller = createController();
@@ -486,7 +486,7 @@ var obj = function() {
 						parseFloat(result[2]),
 						parseFloat(result[3])
 					);
-				} else if (lineSecondChar === "t" && (result = pattern.uv.exec(line)) !== null) {
+				} else if (lineSecondChar === "t" && (result = pattern.uv.exec(line)) !== null) {	// lgtm [js/useless-assignment-to-local]
 				} else {
 					throw new Error("OBJ malformed");
 				}
