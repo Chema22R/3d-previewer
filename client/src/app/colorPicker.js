@@ -482,9 +482,7 @@
                 return $;
             };
             function color(e) {
-                var a = HSV2RGB(HSV),
-                    b = HSV2RGB([HSV[0], 1, 1]);
-                SV.style.backgroundColor = 'rgb(' + b.join(',') + ')';
+                SV.style.backgroundColor = 'rgb(' + HSV2RGB([HSV[0], 1, 1]).join(',') + ')';
                 set_data(HSV);
                 prevent(e);
             };
@@ -590,7 +588,6 @@
                 y = size(h),
                 z = y.h > w.h, // has vertical scroll bar
                 ww = offset(win),
-                yy = offset(h),
                 w_W = z ? /* Math.max(y.w, w.w) */ y.w : w.w + ww.l,
                 w_H = z ? w.h + ww.t : Math.max(y.h, w.h),
                 to = offset(target);

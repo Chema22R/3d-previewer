@@ -54,7 +54,7 @@ function controller3D() {
 		});
 
 		// bounding box to calculate the mesh size
-		boundingBox = new THREE.Box3()
+		boundingBox = new THREE.Box3();
 
 		animate();
 	};
@@ -90,7 +90,7 @@ function controller3D() {
 		}
 
 		scene.add(mesh);
-	}
+	};
 
 
 	/* Private functions
