@@ -21,6 +21,11 @@ $(function() {
 				success: function(res, status) {
 					$(".loadingBar.wrapper").fadeOut("fast");
 
+					$("canvas.particles-js-canvas-el").fadeOut("slow", () => {
+                        $("canvas.particles-js-canvas-el").remove();
+                        $("canvas.previewControl").css("display", "unset");
+                    });
+
 					showMessage("File uploaded successfully", "green");
 					
                     window.controller3D.loadMesh(res);
