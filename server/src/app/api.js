@@ -178,7 +178,7 @@ exports.getById = function(req, res) {
 		Geometry.findOneAndRemove({
 			_id: req.params.id
 		}, {
-			select: {
+			select: {
 				_id: 0
 			}
 		}, function(err, query) {
@@ -216,7 +216,7 @@ exports.deleteById = function(req, res) {
 		Geometry.findOneAndRemove({
 			_id: req.params.id
 		}, {
-			select: {
+			select: {
 				_id: 0,
 				path: 1
 			}

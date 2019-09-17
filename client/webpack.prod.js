@@ -9,7 +9,7 @@ module.exports = merge(common, {
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
-            SERVER_URL: JSON.stringify(process.env.SERVER_URL || "https://previewer3d.herokuapp.com")
+            SERVER_URL: JSON.stringify(process.env.SERVER_URL || "https://previewer3d.herokuapp.com")
         })
     ]
 });
