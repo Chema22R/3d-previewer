@@ -67,7 +67,7 @@ $(function() {
 			color: "white",
 			background: color
 		}).fadeIn("slow", function() {
-			setTimeout(function() {
+			setTimeout(function() {
 				$(".stateMessage").fadeOut("slow");
 			}, 2000);
 		});
