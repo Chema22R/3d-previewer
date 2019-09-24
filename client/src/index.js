@@ -15,3 +15,5 @@ import "./app/helpMenu";
 
 window.projectIntro = projectIntro;
 projectIntro.init();
+
+document.body.style.opacity = "1";
