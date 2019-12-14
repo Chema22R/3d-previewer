@@ -56,7 +56,6 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
     |- webpack.prod.js
 |- .gitignore
 |- LICENSE
-|- logCodes
 |- package.json
 |- Procfile
 |- README.md
