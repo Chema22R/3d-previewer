@@ -39,18 +39,21 @@ const defaultFiles = [
 ];
 
 
-exports.deleteOldRecords = () => {
+exports.deleteOldRecords = (app) => {
     Geometry.deleteMany({}, (error) => {
         if (error) {
+            app.locals.logger.error("Initialization: Error formatting 'Geometries' collection", {meta: {error: error.message}});
             console.error("- ERROR formatting 'Geometries' collection\n     " + error.message);
         } else {
             fs.readdir(filesDir, (error, files) => {
                 if (error) {
+                    app.locals.logger.error("Initialization: Error formatting '" + filesDir + "' directory", {meta: {error: error.message}});
                     console.error("- ERROR formatting '" + filesDir + "' directory\n     " + error.message);
                 } else {
                     for (let file of files) {
                         fs.unlinkSync(filesDir + "/" + file);
                     }
+                    app.locals.logger.log("Initialization: Formatted 'Geometries' collection and '" + filesDir + "' directory", {meta: {filesCount: files.length}});
                     console.log("> Formatted 'Geometries' collection and '" + filesDir + "' directory (" + files.length + " files)");
                 }
             });
@@ -59,18 +62,21 @@ exports.deleteOldRecords = () => {
 };
 
 
-exports.loadDefaultDB = () => {
+exports.loadDefaultDB = (app) => {
     Geometry.insertMany(defaultFiles, function(error, docs) {
         if (error) {
+            app.locals.logger.error("Initialization: Error adding default files to 'Geometries' collection", {meta: {error: error.message}});
             console.error("- ERROR adding default files to 'Geometries' collection\n     " + error.message);
         } else {
             fs.readdir(defaultFilesDir, (error, files) => {
                 if (error) {
+                    app.locals.logger.error("Initialization: Error copying default files to '" + filesDir + "' directory", {meta: {error: error.message}});
                     console.error("- ERROR copying default files to '" + filesDir + "' directory\n     " + error.message);
                 } else {
                     for (let file of files) {
                         fs.copyFileSync(defaultFilesDir + "/" + file, filesDir + "/" + file);
                     }
+                    app.locals.logger.log("Initialization: Default files added to 'Geometries' collection and to '" + filesDir + "' directory", {meta: {filesCount: files.length}});
                     console.log("> Default files added to 'Geometries' collection and to '" + filesDir + "' directory (" + files.length + " files)");
                 }
             });

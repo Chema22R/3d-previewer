@@ -12,7 +12,8 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             DEFAULT_CORS_ORIGIN: /localhost:8080$/,
             DEFAULT_PORT: 8000,
-            DEFAULT_DATABASE_URI: JSON.stringify("mongodb://localhost/3dpreviewer")
+            DEFAULT_DATABASE_URI: JSON.stringify("mongodb://localhost/3dpreviewer"),
+            DEFAULT_LOGDNA_KEY: JSON.stringify("9968ae38e2a3067948d5724a2892e421")
         }),
         new NodemonPlugin()
     ]
