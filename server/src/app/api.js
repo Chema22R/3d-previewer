@@ -32,7 +32,7 @@ exports.upload = function(req, res) {
 			dataChunks.push(chunk);
 			dataLength += chunk.length;
 		}).on("end", function() {
-			writeLog(40, [filename, dataChunks.length]);
+			writeLog(4, "All chunks of the file captured", {origin: req.connection.remoteAddress, fileName: filename, chunksCount: dataChunks.length});
 
 			/* File assembly */
 			var data = new Buffer.alloc(dataLength);
@@ -42,13 +42,13 @@ exports.upload = function(req, res) {
 				pos += dataChunks[i].length;
 			}
 
-			writeLog(41, filename);
+			writeLog(4, "File assembled", {origin: req.connection.remoteAddress, fileName: filename});
 
 			/* File processing */
 			fileProcessing(filename, data);
 		});
 	}).on("error", function(err) {
-		writeLog(10, [filename, err.message]);
+		writeLog(1, "Error at file reading", {origin: req.connection.remoteAddress, fileName: filename, error: err.message});
 		res.sendStatus(500);
 	});
 
@@ -57,7 +57,7 @@ exports.upload = function(req, res) {
 		try {
 			/* File parse */
 			var plotData = Parser.parse(fileName, data);
-			writeLog(42, fileName);
+			writeLog(4, "File parsed", {origin: req.connection.remoteAddress, fileName: fileName});
 
 			/* Response to client */
 			res.status(201).send(plotData);
@@ -72,36 +72,40 @@ exports.upload = function(req, res) {
 					path: "./files/" + uuid()
 				}, function(err, query) {
 					if (err) {
-						writeLog(13, [fileName, err.message]);
+						writeLog(1, "Error at geometry storage", {origin: req.connection.remoteAddress, fileName: fileName, error: err.message});
 						res.sendStatus(500);
 					} else {
 						fs.writeFileSync(query.path, deflated);
-						writeLog(30, [fileName, query.path]);
+						writeLog(3, "Geometry stored", {origin: req.connection.remoteAddress, fileName: fileName, path: query.path});
 					}
 				});
 			} else {
-				writeLog(12, null);
+				writeLog(1, "Database disconnected", {origin: req.connection.remoteAddress});
 				res.sendStatus(500);
 			}
 
 		} catch (err) {
-			writeLog(11, [fileName, err.message]);
+			writeLog(1, "Error at file procesing", {origin: req.connection.remoteAddress, fileName: fileName, error: err.message});
 			res.sendStatus(500);
 		}
 	}
 
-	function writeLog(code, info) {
-        if (code < req.app.locals.logger.level) {
-            req.app.locals.logger.history.push({
-                date: new Date(),
-                origin: req.connection.remoteAddress,
-                request: 'UPLOAD',
-                code: code,
-                info: info
-            });
+	function writeLog(type, msg, meta) {
+		msg = "Upload File: " + msg;
 
-            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
-        }
+		switch (type) {
+			case 1:
+				req.app.locals.logger.error(msg, {meta: meta});
+				break;
+			case 2:
+				req.app.locals.logger.warn(msg, {meta: meta});
+				break;
+			case 3:
+				req.app.locals.logger.log(msg, {meta: meta});
+				break;
+			default:
+				req.app.locals.logger.debug(msg, {meta: meta});
+		}
     }
 };
 
@@ -114,30 +118,34 @@ exports.getAll = function(req, res) {
 			date: 1
 		}, function(err, query) {
 			if (err) {
-				writeLog(11, err.message);
+				writeLog(1, "Error at getting files list", {origin: req.connection.remoteAddress, error: err.message});
 				res.sendStatus(500);
 			} else {
-				writeLog(30, query.length);
+				writeLog(3, "Files list obtained", {origin: req.connection.remoteAddress, fileListCount: query.length});
 				res.status(200).json(query);
 			}
 		});
 	} else {
-		writeLog(10, null);
+		writeLog(1, "Database disconnected", {origin: req.connection.remoteAddress});
 		res.sendStatus(500);
 	}
 
-	function writeLog(code, info) {
-        if (code < req.app.locals.logger.level) {
-            req.app.locals.logger.history.push({
-                date: new Date(),
-                origin: req.connection.remoteAddress,
-                request: 'GETALL',
-                code: code,
-                info: info
-            });
+	function writeLog(type, msg, meta) {
+		msg = "Get Files List: " + msg;
 
-            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
-        }
+		switch (type) {
+			case 1:
+				req.app.locals.logger.error(msg, {meta: meta});
+				break;
+			case 2:
+				req.app.locals.logger.warn(msg, {meta: meta});
+				break;
+			case 3:
+				req.app.locals.logger.log(msg, {meta: meta});
+				break;
+			default:
+				req.app.locals.logger.debug(msg, {meta: meta});
+		}
     }
 };
 
@@ -151,7 +159,7 @@ exports.getById = function(req, res) {
 			path: 1
 		}, function(err, query) {
 			if (err) {
-				writeLog(11, [req.params.id, err.message]);
+				writeLog(1, "Error at getting geometry", {origin: req.connection.remoteAddress, fileId: req.params.id, error: err.message});
 				res.sendStatus(500);
 			} else if (query) {
 				if (fs.existsSync(query.path)) {
@@ -159,18 +167,18 @@ exports.getById = function(req, res) {
 					let inflated = zlib.inflateSync(new Buffer.from(data));
 					let geometry = JSON.parse(inflated);
 
-					writeLog(30, req.params.id);
+					writeLog(3, "Geometry obtained", {origin: req.connection.remoteAddress, fileId: req.params.id});
 					res.status(200).json(geometry);
 				} else {
 					removeLostFile();
 				}
 			} else {
-				writeLog(20, req.params.id);
+				writeLog(2, "File to retrieve not found", {origin: req.connection.remoteAddress, fileId: req.params.id});
 				res.sendStatus(404);
 			}
 		});
 	} else {
-		writeLog(10, null);
+		writeLog(1, "Database disconnected", {origin: req.connection.remoteAddress});
 		res.sendStatus(500);
 	}
 
@@ -183,30 +191,34 @@ exports.getById = function(req, res) {
 			}
 		}, function(err, query) {
 			if (err) {
-				writeLog(12, [req.params.id, err.message]);
+				writeLog(1, "Error at removing lost geometry", {origin: req.connection.remoteAddress, fileId: req.params.id, error: err.message});
 				res.sendStatus(500);
 			} else if (query) {
-				writeLog(31, req.params.id);
+				writeLog(3, "Geometry lost and removed", {origin: req.connection.remoteAddress, fileId: req.params.id});
 				res.sendStatus(200);
 			} else {
-				writeLog(21, req.params.id);
+				writeLog(2, "File to remove not found", {origin: req.connection.remoteAddress, fileId: req.params.id});
 				res.sendStatus(404);
 			}
 		});
 	}
 
-	function writeLog(code, info) {
-        if (code < req.app.locals.logger.level) {
-            req.app.locals.logger.history.push({
-                date: new Date(),
-                origin: req.connection.remoteAddress,
-                request: 'GETBYID',
-                code: code,
-                info: info
-            });
+	function writeLog(type, msg, meta) {
+		msg = "Get File: " + msg;
 
-            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
-        }
+		switch (type) {
+			case 1:
+				req.app.locals.logger.error(msg, {meta: meta});
+				break;
+			case 2:
+				req.app.locals.logger.warn(msg, {meta: meta});
+				break;
+			case 3:
+				req.app.locals.logger.log(msg, {meta: meta});
+				break;
+			default:
+				req.app.locals.logger.debug(msg, {meta: meta});
+		}
     }
 };
 
@@ -222,37 +234,41 @@ exports.deleteById = function(req, res) {
 			}
 		}, function(err, query) {
 			if (err) {
-				writeLog(11, [req.params.id, err.message]);
+				writeLog(1, "Error at removing geometry", {origin: req.connection.remoteAddress, fileId: req.params.id, error: err.message});
 				res.sendStatus(500);
 			} else if (query) {
 				if (fs.existsSync(query.path)) {
 					fs.unlinkSync(query.path);
 				}
 
-				writeLog(30, req.params.id);
+				writeLog(3, "Geometry removed",  {origin: req.connection.remoteAddress, fileId: req.params.id});
 				res.sendStatus(200);
 			} else {
-				writeLog(20, req.params.id);
+				writeLog(2, "File not found",  {origin: req.connection.remoteAddress, fileId: req.params.id});
 				res.sendStatus(404);
 			}
 		});
 	} else {
-		writeLog(10, null);
+		writeLog(1, "Database disconnected", {origin: req.connection.remoteAddress});
 		res.sendStatus(500);
 	}
 
-	function writeLog(code, info) {
-        if (code < req.app.locals.logger.level) {
-            req.app.locals.logger.history.push({
-                date: new Date(),
-                origin: req.connection.remoteAddress,
-                request: 'DELETEBYID',
-                code: code,
-                info: info
-            });
+	function writeLog(type, msg, meta) {
+		msg = "Delete File: " + msg;
 
-            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
-        }
+		switch (type) {
+			case 1:
+				req.app.locals.logger.error(msg, {meta: meta});
+				break;
+			case 2:
+				req.app.locals.logger.warn(msg, {meta: meta});
+				break;
+			case 3:
+				req.app.locals.logger.log(msg, {meta: meta});
+				break;
+			default:
+				req.app.locals.logger.debug(msg, {meta: meta});
+		}
     }
 };
 
@@ -272,11 +288,11 @@ exports.checkStatus = function(req, res) {
 							checkDatabase(++attempt);
 						}, 5000);
 					} else {
-						writeLog(11, err.message);
+						writeLog(1, "Error accessing Geometries collection", {origin: req.connection.remoteAddress, error: err.message});
 						res.sendStatus(500);
 					}
 				} else {
-					writeLog(30, null);
+					writeLog(3, "Database connected and Geometries collection accessible", {origin: req.connection.remoteAddress});
 					res.sendStatus(200);
 				}
 			});
@@ -286,23 +302,25 @@ exports.checkStatus = function(req, res) {
 					checkDatabase(++attempt);
 			    }, 5000);
 			} else {
-				writeLog(10, null);
+				writeLog(1, "Database disconnected", {origin: req.connection.remoteAddress});
 				res.sendStatus(500);
 			}
 		}
 	}
 
-	function writeLog(code, info) {
-        if (code < req.app.locals.logger.level) {
-            req.app.locals.logger.history.push({
-                date: new Date(),
-                origin: req.connection.remoteAddress,
-                request: 'CHECKSTATUS',
-                code: code,
-                info: info
-            });
-
-            fs.writeFileSync(req.app.locals.logPath, JSON.stringify(req.app.locals.logger), {encoding: 'utf8', flag: 'w'});
-        }
+	function writeLog(type, msg, meta) {
+		switch (type) {
+			case 1:
+				req.app.locals.logger.error(msg, {app: 'Status Check', meta: meta});
+				break;
+			case 2:
+				req.app.locals.logger.warn(msg, {app: 'Status Check', meta: meta});
+				break;
+			case 3:
+				req.app.locals.logger.log(msg, {app: 'Status Check', meta: meta});
+				break;
+			default:
+				req.app.locals.logger.debug(msg, {app: 'Status Check', meta: meta});
+		}
     }
 };

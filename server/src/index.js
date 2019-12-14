@@ -8,6 +8,7 @@ var app = express();
 
 var cors = require("cors");
 var bodyParser = require("body-parser");
+var Logger = require('logdna');
 var fs = require("fs");
 var mongoose = require("mongoose");
 
@@ -37,34 +38,24 @@ app.use(bodyParser.json());
 /* log and files
 ========================================================================== */
 
-app.locals.logPath = './log.json';
+app.locals.logger = Logger.createLogger(process.env.LOGDNA_KEY || DEFAULT_LOGDNA_KEY, {
+    app: "3D Previewer",
+    env: "Node.js",
+    index_meta: true,
+    tags: ['3d-previewer', 'node']
+});
 
-if (fs.existsSync(app.locals.logPath)) {
-	app.locals.logger = JSON.parse(fs.readFileSync(app.locals.logPath, {encoding: 'utf8', flag: 'r'}));
-
-	for (var i=0; i<app.locals.logger.history.length;) {
-		if (new Date().getTime() - new Date(app.locals.logger.history[i].date).getTime() > 5184000000) {	// 5184000000ms = 2 months
-			app.locals.logger.history.splice(i, 1);
-		} else {
-			i++;
-		}
-	}
-} else {
-	app.locals.logger = {
-		level: 40,
-		history: []
-	};
-	fs.writeFileSync(app.locals.logPath, JSON.stringify(app.locals.logger), {encoding: 'utf8', flag: 'w'});
+if (!fs.existsSync("./files")) {
+	fs.mkdirSync("./files");
 }
-
-if (!fs.existsSync("./files")) {fs.mkdirSync("./files");}
 
 
 /* connections
 ========================================================================== */
 
 app.listen(process.env.PORT || DEFAULT_PORT, function () {
-	console.log("> 3D Preview server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
+	app.locals.logger.log("Initialization: 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
+	console.log("> 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
 });
 
 mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
@@ -72,11 +63,13 @@ mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 	useFindAndModify: false
 }, function(err) {
 	if (err) {
+		app.locals.logger.error("Initialization: Error connecting to database '3dpreviewer'", {meta: {err: err.message}});
 		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);
 	} else {
+		app.locals.logger.log("Initialization: Connected to database '3dpreviewer'");
 		console.log("> Connected to database '3dpreviewer'");
-		databaseInit.deleteOldRecords();
-		databaseInit.loadDefaultDB();
+		databaseInit.deleteOldRecords(app);
+		databaseInit.loadDefaultDB(app);
 	}
 });
 
