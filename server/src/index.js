@@ -63,7 +63,8 @@ if (!fs.existsSync("./files")) {
 
 mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 	useNewUrlParser: true,
-	useFindAndModify: false
+	useFindAndModify: false,
+	useUnifiedTopology: true
 }, function(err) {
 	if (err) {
 		app.locals.logger.error("Initialization: Error connecting to database '3dpreviewer'", {meta: {err: err.message}});
