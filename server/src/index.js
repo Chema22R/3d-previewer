@@ -9,8 +9,16 @@ var app = express();
 var cors = require("cors");
 var bodyParser = require("body-parser");
 var Logger = require('logdna');
+var Sentry = require('@sentry/node');
 var fs = require("fs");
 var mongoose = require("mongoose");
+
+
+/* sentry
+========================================================================== */
+
+Sentry.init({ dsn: process.env.SENTRY_DSN || DEFAULT_SENTRY_DSN });
+app.use(Sentry.Handlers.requestHandler());
 
 
 /* controllers
@@ -50,17 +58,13 @@ if (!fs.existsSync("./files")) {
 }
 
 
-/* connections
+/* database connection
 ========================================================================== */
-
-app.listen(process.env.PORT || DEFAULT_PORT, function () {
-	app.locals.logger.log("Initialization: 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
-	console.log("> 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
-});
 
 mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 	useNewUrlParser: true,
-	useFindAndModify: false
+	useFindAndModify: false,
+	useUnifiedTopology: true
 }, function(err) {
 	if (err) {
 		app.locals.logger.error("Initialization: Error connecting to database '3dpreviewer'", {meta: {err: err.message}});
@@ -84,3 +88,15 @@ app.get('/file/:id', cors(corsOpts), api.getById);
 app.delete('/file/:id', cors(corsOpts), api.deleteById);
 
 app.get('/checkStatus', cors(), api.checkStatus);
+
+
+/* app connection
+========================================================================== */
+
+app.use(Sentry.Handlers.errorHandler());
+app.use((err, req, res, next) => { res.sendStatus(500); });
+
+app.listen(process.env.PORT || DEFAULT_PORT, function () {
+	app.locals.logger.log("Initialization: 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
+	console.log("> 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
+});
