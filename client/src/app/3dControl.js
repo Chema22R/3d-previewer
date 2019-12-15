@@ -103,7 +103,7 @@ function controller3D() {
 
 	function geometryCalculator(geometry, plotData) {
 		if (plotData.type === "stl") {
-			if (plotData.vertices.length > 0) {geometry.addAttribute("position", new THREE.BufferAttribute(new Float32Array(plotData.vertices), 3));}
+			if (plotData.vertices.length > 0) {geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(plotData.vertices), 3));}
 
 			if (plotData.normals.length > 0) {
 				var normals = [];
@@ -114,16 +114,16 @@ function controller3D() {
 					normals.push(plotData.normals[i], plotData.normals[i+1], plotData.normals[i+2]);
 				}
 
-				geometry.addAttribute("normal", new THREE.BufferAttribute(new Float32Array(normals), 3));
+				geometry.setAttribute("normal", new THREE.BufferAttribute(new Float32Array(normals), 3));
 			}
 		} else if (plotData.type === "ply") {
 			if (plotData.indices.length > 0) {geometry.setIndex(plotData.indices);}
-			if (plotData.vertices.length > 0) {geometry.addAttribute("position", new THREE.Float32BufferAttribute(plotData.vertices, 3));}
-			if (plotData.normals.length > 0) {geometry.addAttribute("normal", new THREE.Float32BufferAttribute(plotData.normals, 3));}
+			if (plotData.vertices.length > 0) {geometry.setAttribute("position", new THREE.Float32BufferAttribute(plotData.vertices, 3));}
+			if (plotData.normals.length > 0) {geometry.setAttribute("normal", new THREE.Float32BufferAttribute(plotData.normals, 3));}
 			geometry.computeBoundingSphere();
 		} else if (plotData.type === "obj") {
-			if (plotData.vertices.length > 0) {geometry.addAttribute("position", new THREE.Float32BufferAttribute(plotData.vertices, 3));}
-			if (plotData.normals.length > 0) {geometry.addAttribute("normal", new THREE.Float32BufferAttribute(plotData.normals, 3));}
+			if (plotData.vertices.length > 0) {geometry.setAttribute("position", new THREE.Float32BufferAttribute(plotData.vertices, 3));}
+			if (plotData.normals.length > 0) {geometry.setAttribute("normal", new THREE.Float32BufferAttribute(plotData.normals, 3));}
 		}
 
 		return geometry;
