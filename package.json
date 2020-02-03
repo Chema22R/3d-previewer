@@ -22,6 +22,6 @@
     },
     "homepage": "https://github.com/Chema22R/3d-previewer#readme",
     "dependencies": {
-        "concurrently": "^5.0.1"
+        "concurrently": "^5.1.0"
     }
 }
