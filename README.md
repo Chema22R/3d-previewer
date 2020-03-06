@@ -22,6 +22,8 @@ Check out a real example of the application from [here](https://3dpreviewer.chem
 
 ## Directory Structure
 ```
+|- /.dependabot
+    |- ...
 |- /.github
     |- ...
 |- /client
