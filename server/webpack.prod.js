@@ -14,7 +14,7 @@ module.exports = merge(common, {
         ]),
         new webpack.DefinePlugin({
             DEFAULT_CORS_ORIGIN: /chema22r\.com$/,
-            DEFAULT_ENV: 'production',
+            DEFAULT_ENV: JSON.stringify('production'),
             DEFAULT_PORT: 8000,
             DEFAULT_DATABASE_URI: JSON.stringify("mongodb+srv://3DPreviewer:64)*o.BF2W62J%5E%3ER8%7BfE%7B2@generaldefaultdb-g1vbu.mongodb.net/3dpreviewer?retryWrites=true&w=majority"),
             DEFAULT_LOGDNA_KEY: JSON.stringify("9968ae38e2a3067948d5724a2892e421"),
