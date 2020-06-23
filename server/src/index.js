@@ -70,7 +70,6 @@ mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
 		app.locals.logger.error("Initialization: Error connecting to database '3dpreviewer'", {meta: {err: err.message}});
 		console.error("- ERROR connecting to database '3dpreviewer'\n     " + err.message);
 	} else {
-		app.locals.logger.log("Initialization: Connected to database '3dpreviewer'");
 		console.log("> Connected to database '3dpreviewer'");
 		databaseInit.deleteOldRecords(app);
 		databaseInit.loadDefaultDB(app);
@@ -97,6 +96,5 @@ app.use(Sentry.Handlers.errorHandler());
 app.use((err, req, res, next) => { res.sendStatus(500); });
 
 app.listen(process.env.PORT || DEFAULT_PORT, function () {
-	app.locals.logger.log("Initialization: 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
 	console.log("> 3D Previewer server running on http://localhost:" + (process.env.PORT || DEFAULT_PORT));
 });
