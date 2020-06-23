@@ -17,7 +17,7 @@ var mongoose = require("mongoose");
 /* sentry
 ========================================================================== */
 
-Sentry.init({ dsn: process.env.SENTRY_DSN || DEFAULT_SENTRY_DSN });
+Sentry.init({ dsn: process.env.SENTRY_DSN || DEFAULT_SENTRY_DSN, environment: process.env.ENV || DEFAULT_ENV });
 app.use(Sentry.Handlers.requestHandler());
 
 
@@ -48,9 +48,9 @@ app.use(bodyParser.json());
 
 app.locals.logger = Logger.createLogger(process.env.LOGDNA_KEY || DEFAULT_LOGDNA_KEY, {
     app: "3D Previewer",
-    env: "Node.js",
+    env: process.env.ENV || DEFAULT_ENV,
     index_meta: true,
-    tags: ['3d-previewer', 'node']
+    tags: ['3d-previewer', process.env.ENV || DEFAULT_ENV]
 });
 
 if (!fs.existsSync("./files")) {
