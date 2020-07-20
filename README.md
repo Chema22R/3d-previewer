@@ -10,7 +10,7 @@ The main interface has only two buttons. The upper right one allows users to sen
 
 In both ways, users can load an object into the interface, after which they can perform basic operations on the object, such as rotation, padding or zooming.
 
-Check out a real example of the application from [here](https://3dpreviewer.chema22r.com).
+Check out a real example of the application from [here](https://3d-previewer.chema22r.com).
 
 ## Setup and Run
 1. Download the source code
