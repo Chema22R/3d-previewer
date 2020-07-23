@@ -22,7 +22,7 @@
     "dependencies": {
         "jquery": "^3.5.0",
         "particles.js": "^2.0.0",
-        "project-intro": "^2.1.3",
+        "project-intro": "^2.2.0",
         "three": "^0.115.0"
     },
     "devDependencies": {
@@ -33,7 +33,7 @@
         "style-loader": "^1.1.3",
         "webpack": "^4.42.1",
         "webpack-cli": "^3.3.11",
-        "webpack-dev-server": "^3.10.3",
+        "webpack-dev-server": "^3.11.0",
         "webpack-merge": "^4.2.2"
     }
 }
