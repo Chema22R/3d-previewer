@@ -207,6 +207,8 @@ canvas.previewControl {
 	background: #EEE;
 }
 
+.fileList.menu .fileList.entries {font-size: 16px;}
+
 .fileList.menu .fileList.entry {
 	display: flex;
 	margin-left: 3px;
