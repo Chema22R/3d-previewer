@@ -22,7 +22,7 @@
     "dependencies": {
         "jquery": "^3.5.0",
         "particles.js": "^2.0.0",
-        "project-intro": "^2.2.0",
+        "project-intro": "^2.2.1",
         "three": "^0.115.0"
     },
     "devDependencies": {
