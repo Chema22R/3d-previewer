@@ -1,5 +1,5 @@
 const common = require("./webpack.config.js");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
@@ -9,9 +9,9 @@ module.exports = merge(common, {
     devtool: "source-map",
     plugins: [
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin([
-            {from: "./files_default", to: "files_default"}
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [{from: "./files_default", to: "files_default"}]
+        }),
         new webpack.DefinePlugin({
             DEFAULT_CORS_ORIGIN: /chema22r\.com$/,
             DEFAULT_ENV: JSON.stringify('production'),
