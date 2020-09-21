@@ -1,4 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/82add870-d40a-4845-ae9c-c79825808ff1/deploy-status)](https://app.netlify.com/sites/3dpreviewer/deploys)
+![CodeQL](https://github.com/Chema22R/3d-previewer/workflows/CodeQL/badge.svg)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/Chema22R/3d-previewer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Chema22R/3d-previewer/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Chema22R/3d-previewer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Chema22R/3d-previewer/context:javascript)
 [![MIT License](https://camo.githubusercontent.com/d59450139b6d354f15a2252a47b457bb2cc43828/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f7365727665726c6573732e737667)](LICENSE)
