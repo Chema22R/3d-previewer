@@ -23,7 +23,7 @@
         "jquery": "^3.5.0",
         "particles.js": "^2.0.0",
         "project-intro": "^2.2.2",
-        "three": "^0.115.0"
+        "three": "^0.125.0"
     },
     "devDependencies": {
         "clean-webpack-plugin": "^3.0.0",
