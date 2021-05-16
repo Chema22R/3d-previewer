@@ -1,4 +1,5 @@
 const common = require("./webpack.config.js");
+const dotenv = require('dotenv').config().parsed;
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
@@ -14,8 +15,8 @@ module.exports = merge(common, {
             DEFAULT_ENV: JSON.stringify('development'),
             DEFAULT_PORT: 8000,
             DEFAULT_DATABASE_URI: JSON.stringify("mongodb://localhost/3dpreviewer"),
-            DEFAULT_LOGDNA_KEY: JSON.stringify("9968ae38e2a3067948d5724a2892e421"),
-            DEFAULT_SENTRY_DSN: JSON.stringify("https://36059f1b619e4acf84370eab11af216e@sentry.io/1857319")
+            DEFAULT_LOGDNA_KEY: JSON.stringify(dotenv.PREVIEWER_3D_LOGDNA_KEY),
+            DEFAULT_SENTRY_DSN: JSON.stringify(dotenv.PREVIEWER_3D_SENTRY_DSN)
         }),
         new NodemonPlugin()
     ]

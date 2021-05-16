@@ -17,7 +17,7 @@ var mongoose = require("mongoose");
 /* sentry
 ========================================================================== */
 
-Sentry.init({ dsn: process.env.SENTRY_DSN || DEFAULT_SENTRY_DSN, environment: process.env.ENV || DEFAULT_ENV });
+Sentry.init({ dsn: DEFAULT_SENTRY_DSN, environment: DEFAULT_ENV });
 app.use(Sentry.Handlers.requestHandler());
 
 
@@ -32,7 +32,7 @@ var databaseInit = require("./app/databaseInit.js");
 ========================================================================== */
 
 var corsOpts = {
-	origin: process.env.CORS_ORIGIN || DEFAULT_CORS_ORIGIN
+	origin: DEFAULT_CORS_ORIGIN
 };
 app.options("/file/:id", cors(corsOpts));	// enable pre-flight request
 
@@ -46,11 +46,11 @@ app.use(bodyParser.json());
 /* log and files
 ========================================================================== */
 
-app.locals.logger = Logger.createLogger(process.env.LOGDNA_KEY || DEFAULT_LOGDNA_KEY, {
+app.locals.logger = Logger.createLogger(DEFAULT_LOGDNA_KEY, {
     app: "3D Previewer",
-    env: process.env.ENV || DEFAULT_ENV,
+    env: DEFAULT_ENV,
     index_meta: true,
-    tags: ['3d-previewer', process.env.ENV || DEFAULT_ENV]
+    tags: ['3d-previewer', DEFAULT_ENV]
 });
 
 if (!fs.existsSync("./files")) {
@@ -61,7 +61,7 @@ if (!fs.existsSync("./files")) {
 /* database connection
 ========================================================================== */
 
-mongoose.connect(process.env.DATABASE_URI || DEFAULT_DATABASE_URI, {
+mongoose.connect(DEFAULT_DATABASE_URI, {
 	useNewUrlParser: true,
 	useFindAndModify: false,
 	useUnifiedTopology: true
