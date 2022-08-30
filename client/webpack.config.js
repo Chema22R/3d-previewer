@@ -4,13 +4,13 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-    entry: {
-        index: "./src/index.js"
-    },
+    target: 'web',
+    entry: "./src/index.js",
     output: {
         clean: true,
         filename: "[name].[contenthash].js",
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "dist"),
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -25,6 +25,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            filename: './index.html',
             template: "./src/index.html"
         }),
         new CopyWebpackPlugin({
