@@ -6,6 +6,7 @@ module.exports = {
         index: "./src/index.js"
     },
     output: {
+        clean: true,
         filename: "[name].js",
         path: path.resolve(__dirname, "dist")
     }
