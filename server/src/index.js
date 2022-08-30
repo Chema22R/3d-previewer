@@ -86,7 +86,7 @@ app.post('/file', cors(corsOpts), api.upload);
 app.get('/file/:id', cors(corsOpts), api.getById);
 app.delete('/file/:id', cors(corsOpts), api.deleteById);
 
-app.get('/checkStatus', cors(), api.checkStatus);
+app.get('/health', cors(), api.checkStatus);
 
 
 /* app connection
