@@ -15,7 +15,7 @@ module.exports = merge(common, {
             DEFAULT_ENV: JSON.stringify('production'),
             DEFAULT_PORT: 8000,
             DEFAULT_DATABASE_URI: JSON.stringify(process.env.PREVIEWER_3D_DATABASE_URI),
-            DEFAULT_LOGDNA_KEY: JSON.stringify(process.env.PREVIEWER_3D_LOGDNA_KEY),
+            DEFAULT_LOGGER_KEY: JSON.stringify(process.env.PREVIEWER_3D_LOGGER_KEY),
             DEFAULT_SENTRY_DSN: JSON.stringify(process.env.PREVIEWER_3D_SENTRY_DSN)
         })
     ]

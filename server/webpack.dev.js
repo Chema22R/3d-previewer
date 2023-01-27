@@ -13,7 +13,7 @@ module.exports = merge(common, {
             DEFAULT_ENV: JSON.stringify('development'),
             DEFAULT_PORT: 8000,
             DEFAULT_DATABASE_URI: JSON.stringify("mongodb://127.0.0.1/3dpreviewer"),
-            DEFAULT_LOGDNA_KEY: JSON.stringify(dotenv.PREVIEWER_3D_LOGDNA_KEY),
+            DEFAULT_LOGGER_KEY: JSON.stringify(dotenv.PREVIEWER_3D_LOGGER_KEY),
             DEFAULT_SENTRY_DSN: JSON.stringify(dotenv.PREVIEWER_3D_SENTRY_DSN)
         }),
         new NodemonPlugin()

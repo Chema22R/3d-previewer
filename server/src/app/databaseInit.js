@@ -53,7 +53,7 @@ exports.deleteOldRecords = (app) => {
                     for (let file of files) {
                         fs.unlinkSync(filesDir + "/" + file);
                     }
-                    app.locals.logger.log("Initialization: Formatted 'Geometries' collection and '" + filesDir + "' directory", {meta: {filesCount: files.length}});
+                    app.locals.logger.info("Initialization: Formatted 'Geometries' collection and '" + filesDir + "' directory", {meta: {filesCount: files.length}});
                     console.log("> Formatted 'Geometries' collection and '" + filesDir + "' directory (" + files.length + " files)");
                 }
             });
@@ -76,7 +76,7 @@ exports.loadDefaultDB = (app) => {
                     for (let file of files) {
                         fs.copyFileSync(defaultFilesDir + "/" + file, filesDir + "/" + file);
                     }
-                    app.locals.logger.log("Initialization: Default files added to 'Geometries' collection and to '" + filesDir + "' directory", {meta: {filesCount: files.length}});
+                    app.locals.logger.info("Initialization: Default files added to 'Geometries' collection and to '" + filesDir + "' directory", {meta: {filesCount: files.length}});
                     console.log("> Default files added to 'Geometries' collection and to '" + filesDir + "' directory (" + files.length + " files)");
                 }
             });

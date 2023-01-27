@@ -8,7 +8,7 @@ var app = express();
 
 var cors = require("cors");
 var bodyParser = require("body-parser");
-var Logger = require('logdna');
+const { Logtail } = require("@logtail/node");
 var Sentry = require('@sentry/node');
 var fs = require("fs");
 var mongoose = require("mongoose");
@@ -46,12 +46,7 @@ app.use(bodyParser.json());
 /* log and files
 ========================================================================== */
 
-app.locals.logger = Logger.createLogger(DEFAULT_LOGDNA_KEY, {
-    app: "3D Previewer",
-    env: DEFAULT_ENV,
-    index_meta: true,
-    tags: ['3d-previewer', DEFAULT_ENV]
-});
+app.locals.logger = new Logtail(DEFAULT_LOGGER_KEY);
 
 if (!fs.existsSync("./files")) {
 	fs.mkdirSync("./files");

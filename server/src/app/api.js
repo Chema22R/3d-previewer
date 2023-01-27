@@ -101,7 +101,7 @@ exports.upload = function(req, res) {
 				req.app.locals.logger.warn(msg, {meta: meta});
 				break;
 			case 3:
-				req.app.locals.logger.log(msg, {meta: meta});
+				req.app.locals.logger.info(msg, {meta: meta});
 				break;
 			default:
 				req.app.locals.logger.debug(msg, {meta: meta});
@@ -141,7 +141,7 @@ exports.getAll = function(req, res) {
 				req.app.locals.logger.warn(msg, {meta: meta});
 				break;
 			case 3:
-				req.app.locals.logger.log(msg, {meta: meta});
+				req.app.locals.logger.info(msg, {meta: meta});
 				break;
 			default:
 				req.app.locals.logger.debug(msg, {meta: meta});
@@ -214,7 +214,7 @@ exports.getById = function(req, res) {
 				req.app.locals.logger.warn(msg, {meta: meta});
 				break;
 			case 3:
-				req.app.locals.logger.log(msg, {meta: meta});
+				req.app.locals.logger.info(msg, {meta: meta});
 				break;
 			default:
 				req.app.locals.logger.debug(msg, {meta: meta});
@@ -264,7 +264,7 @@ exports.deleteById = function(req, res) {
 				req.app.locals.logger.warn(msg, {meta: meta});
 				break;
 			case 3:
-				req.app.locals.logger.log(msg, {meta: meta});
+				req.app.locals.logger.info(msg, {meta: meta});
 				break;
 			default:
 				req.app.locals.logger.debug(msg, {meta: meta});
@@ -317,7 +317,7 @@ exports.checkStatus = function(req, res) {
 				req.app.locals.logger.warn(msg, {app: 'Status Check', meta: meta});
 				break;
 			case 3:
-				req.app.locals.logger.log(msg, {app: 'Status Check', meta: meta});
+				req.app.locals.logger.info(msg, {app: 'Status Check', meta: meta});
 				break;
 			default:
 				req.app.locals.logger.debug(msg, {app: 'Status Check', meta: meta});
